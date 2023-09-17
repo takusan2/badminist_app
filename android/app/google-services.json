@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "130921850201",
+    "project_id": "badminist-29a91",
+    "storage_bucket": "badminist-29a91.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130921850201:android:c77037d8a77902bb989848",
+        "android_client_info": {
+          "package_name": "com.example.badminist_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "130921850201-v41vck7u4oaftp9l4qb59o5qcto4jcc4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8duCu12dzf8nZ-Qhrp8f880Lf3cfiQWc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "130921850201-v41vck7u4oaftp9l4qb59o5qcto4jcc4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
