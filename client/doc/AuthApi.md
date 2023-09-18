@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **authActivateUserPost**
-> UserReadModel authActivateUserPost(activateUser)
+> UserReadModel authActivateUserPost(activateUserRequestBody)
 
 本登録
 
@@ -23,13 +23,13 @@ Method | HTTP request | Description
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = AuthApi();
-final activateUser = ActivateUser(); // ActivateUser | 
+final api = Openapi().getAuthApi();
+final ActivateUserRequestBody activateUserRequestBody = ; // ActivateUserRequestBody | 
 
 try {
-    final result = api_instance.authActivateUserPost(activateUser);
-    print(result);
-} catch (e) {
+    final response = api.authActivateUserPost(activateUserRequestBody);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling AuthApi->authActivateUserPost: $e\n');
 }
 ```
@@ -38,7 +38,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **activateUser** | [**ActivateUser**](ActivateUser.md)|  | [optional] 
+ **activateUserRequestBody** | [**ActivateUserRequestBody**](ActivateUserRequestBody.md)|  | [optional] 
 
 ### Return type
 
@@ -56,7 +56,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **authLoginPost**
-> Token authLoginPost(login)
+> Token authLoginPost(loginRequestBody)
 
 ログイン
 
@@ -64,13 +64,13 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = AuthApi();
-final login = Login(); // Login | 
+final api = Openapi().getAuthApi();
+final LoginRequestBody loginRequestBody = ; // LoginRequestBody | 
 
 try {
-    final result = api_instance.authLoginPost(login);
-    print(result);
-} catch (e) {
+    final response = api.authLoginPost(loginRequestBody);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling AuthApi->authLoginPost: $e\n');
 }
 ```
@@ -79,7 +79,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **login** | [**Login**](Login.md)|  | [optional] 
+ **loginRequestBody** | [**LoginRequestBody**](LoginRequestBody.md)|  | [optional] 
 
 ### Return type
 
@@ -97,7 +97,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **authTemporaryRegistrationPost**
-> Success authTemporaryRegistrationPost(temporaryRegistration)
+> Success authTemporaryRegistrationPost(temporaryRegistrationRequestBody)
 
 仮登録
 
@@ -105,13 +105,13 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = AuthApi();
-final temporaryRegistration = TemporaryRegistration(); // TemporaryRegistration | 
+final api = Openapi().getAuthApi();
+final TemporaryRegistrationRequestBody temporaryRegistrationRequestBody = ; // TemporaryRegistrationRequestBody | 
 
 try {
-    final result = api_instance.authTemporaryRegistrationPost(temporaryRegistration);
-    print(result);
-} catch (e) {
+    final response = api.authTemporaryRegistrationPost(temporaryRegistrationRequestBody);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling AuthApi->authTemporaryRegistrationPost: $e\n');
 }
 ```
@@ -120,7 +120,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **temporaryRegistration** | [**TemporaryRegistration**](TemporaryRegistration.md)|  | [optional] 
+ **temporaryRegistrationRequestBody** | [**TemporaryRegistrationRequestBody**](TemporaryRegistrationRequestBody.md)|  | [optional] 
 
 ### Return type
 

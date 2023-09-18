@@ -1,53 +1,43 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:openapi/api.dart';
 import 'package:test/test.dart';
+import 'package:openapi/openapi.dart';
 
 
 /// tests for CommunitiesApi
 void main() {
-  // final instance = CommunitiesApi();
+  final instance = Openapi().getCommunitiesApi();
 
-  group('tests for CommunitiesApi', () {
+  group(CommunitiesApi, () {
     // コミュニティにメンバーを追加
     //
-    //Future<Success> communitiesAddMemberPost(String communityId, { AddMember addMember }) async
+    //Future<Success> communitiesAddMemberPost({ AddMemberRequestBody addMemberRequestBody }) async
     test('test communitiesAddMemberPost', () async {
       // TODO
     });
 
     // コミュニティにプレイヤーを追加
     //
-    //Future<Success> communitiesAddPlayerPost({ AddPlayer addPlayer }) async
+    //Future<Success> communitiesAddPlayerPost({ AddPlayerRequestBody addPlayerRequestBody }) async
     test('test communitiesAddPlayerPost', () async {
       // TODO
     });
 
     // メンバーの権限を変更
     //
-    //Future<Success> communitiesChangeMemberRolePut(String communityId, { ChangeMemberRole changeMemberRole }) async
+    //Future<Success> communitiesChangeMemberRolePut({ ChangeMemberRoleRequestBody changeMemberRoleRequestBody }) async
     test('test communitiesChangeMemberRolePut', () async {
       // TODO
     });
 
     // プレイヤーの試合数を変更
     //
-    //Future<Success> communitiesChangePlayerNumGamesPut({ ChangePlayerNumGames changePlayerNumGames }) async
+    //Future<Success> communitiesChangePlayerNumGamesPut({ ChangePlayerNumGamesRequestBody changePlayerNumGamesRequestBody }) async
     test('test communitiesChangePlayerNumGamesPut', () async {
       // TODO
     });
 
     // プレイヤーのプロパティを変更
     //
-    //Future<Success> communitiesChangePlayerPropertyPut({ ChangePlayerProperty changePlayerProperty }) async
+    //Future<Success> communitiesChangePlayerPropertyPut({ ChangePlayerPropertyRequestBody changePlayerPropertyRequestBody }) async
     test('test communitiesChangePlayerPropertyPut', () async {
       // TODO
     });
@@ -82,49 +72,49 @@ void main() {
 
     // コミュニティの作成
     //
-    //Future<Success> communitiesCreateCommunityPost({ CreateCommunity createCommunity }) async
+    //Future<Success> communitiesCreateCommunityPost({ CreateCommunityRequestBody createCommunityRequestBody }) async
     test('test communitiesCreateCommunityPost', () async {
       // TODO
     });
 
     // コミュニティの削除
     //
-    //Future<Success> communitiesDeleteCommunityPost({ DeleteCommunity deleteCommunity }) async
+    //Future<Success> communitiesDeleteCommunityPost({ DeleteCommunityRequestBody deleteCommunityRequestBody }) async
     test('test communitiesDeleteCommunityPost', () async {
       // TODO
     });
 
     // コミュニティの説明文の変更
     //
-    //Future<Success> communitiesEditCommunityDescriptionPut({ EditCommunityDescription editCommunityDescription }) async
+    //Future<Success> communitiesEditCommunityDescriptionPut({ EditCommunityDescriptionRequestBody editCommunityDescriptionRequestBody }) async
     test('test communitiesEditCommunityDescriptionPut', () async {
       // TODO
     });
 
     // コミュニティからメンバーを削除
     //
-    //Future<Success> communitiesRemoveMemberPost(String communityId, { RemoveMember removeMember }) async
+    //Future<Success> communitiesRemoveMemberPost({ RemoveMemberRequestBody removeMemberRequestBody }) async
     test('test communitiesRemoveMemberPost', () async {
       // TODO
     });
 
     // コミュニティからプレイヤーを削除
     //
-    //Future<Success> communitiesRemovePlayerPost({ RemovePlayer removePlayer }) async
+    //Future<Success> communitiesRemovePlayerPost({ RemovePlayerRequestBody removePlayerRequestBody }) async
     test('test communitiesRemovePlayerPost', () async {
       // TODO
     });
 
     // コミュニティ名の変更
     //
-    //Future<Success> communitiesRenameCommunityPut({ RenameCommunity renameCommunity }) async
+    //Future<Success> communitiesRenameCommunityPut({ RenameCommunityRequestBody renameCommunityRequestBody }) async
     test('test communitiesRenameCommunityPut', () async {
       // TODO
     });
 
     // プレイヤーの試合数をリセット
     //
-    //Future<Success> communitiesResetPlayerNumGamesPut({ ResetPlayerNumGames resetPlayerNumGames }) async
+    //Future<Success> communitiesResetPlayerNumGamesPut({ ResetPlayerNumGamesRequestBody resetPlayerNumGamesRequestBody }) async
     test('test communitiesResetPlayerNumGamesPut', () async {
       // TODO
     });

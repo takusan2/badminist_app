@@ -15,12 +15,13 @@ Method | HTTP request | Description
 [**communitiesChangePlayerNumGamesPut**](CommunitiesApi.md#communitieschangeplayernumgamesput) | **PUT** /communities/change-player-num-games | プレイヤーの試合数を変更
 [**communitiesChangePlayerPropertyPut**](CommunitiesApi.md#communitieschangeplayerpropertyput) | **PUT** /communities/change-player-property | プレイヤーのプロパティを変更
 [**communitiesCommunityIdGenerateMatchesGet**](CommunitiesApi.md#communitiescommunityidgeneratematchesget) | **GET** /communities/{community-id}/generate-matches | マッチの生成
-[**communitiesCommunityIdGet**](CommunitiesApi.md#communitiescommunityidget) | **GET** /communities/{community-id} | コミュニティ一覧の取得
+[**communitiesCommunityIdGet**](CommunitiesApi.md#communitiescommunityidget) | **GET** /communities/{community-id} | コミュニティの取得
 [**communitiesCommunityIdMembersGet**](CommunitiesApi.md#communitiescommunityidmembersget) | **GET** /communities/{community-id}/members | メンバー一覧の取得
 [**communitiesCommunityIdPlayersGet**](CommunitiesApi.md#communitiescommunityidplayersget) | **GET** /communities/{community-id}/players | プレイヤー一覧の取得
 [**communitiesCreateCommunityPost**](CommunitiesApi.md#communitiescreatecommunitypost) | **POST** /communities/create-community | コミュニティの作成
 [**communitiesDeleteCommunityPost**](CommunitiesApi.md#communitiesdeletecommunitypost) | **POST** /communities/delete-community | コミュニティの削除
 [**communitiesEditCommunityDescriptionPut**](CommunitiesApi.md#communitieseditcommunitydescriptionput) | **PUT** /communities/edit-community-description | コミュニティの説明文の変更
+[**communitiesGet**](CommunitiesApi.md#communitiesget) | **GET** /communities | コミュニティ一覧の取得
 [**communitiesRemoveMemberPost**](CommunitiesApi.md#communitiesremovememberpost) | **POST** /communities/remove-member | コミュニティからメンバーを削除
 [**communitiesRemovePlayerPost**](CommunitiesApi.md#communitiesremoveplayerpost) | **POST** /communities/remove-player | コミュニティからプレイヤーを削除
 [**communitiesRenameCommunityPut**](CommunitiesApi.md#communitiesrenamecommunityput) | **PUT** /communities/rename-community | コミュニティ名の変更
@@ -28,28 +29,21 @@ Method | HTTP request | Description
 
 
 # **communitiesAddMemberPost**
-> Success communitiesAddMemberPost(communityId, addMember)
+> Success communitiesAddMemberPost(addMemberRequestBody)
 
 コミュニティにメンバーを追加
 
 ### Example
 ```dart
 import 'package:openapi/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = CommunitiesApi();
-final communityId = communityId_example; // String | 
-final addMember = AddMember(); // AddMember | 
+final api = Openapi().getCommunitiesApi();
+final AddMemberRequestBody addMemberRequestBody = ; // AddMemberRequestBody | 
 
 try {
-    final result = api_instance.communitiesAddMemberPost(communityId, addMember);
-    print(result);
-} catch (e) {
+    final response = api.communitiesAddMemberPost(addMemberRequestBody);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling CommunitiesApi->communitiesAddMemberPost: $e\n');
 }
 ```
@@ -58,8 +52,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **communityId** | **String**|  | 
- **addMember** | [**AddMember**](AddMember.md)|  | [optional] 
+ **addMemberRequestBody** | [**AddMemberRequestBody**](AddMemberRequestBody.md)|  | [optional] 
 
 ### Return type
 
@@ -77,27 +70,21 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **communitiesAddPlayerPost**
-> Success communitiesAddPlayerPost(addPlayer)
+> Success communitiesAddPlayerPost(addPlayerRequestBody)
 
 コミュニティにプレイヤーを追加
 
 ### Example
 ```dart
 import 'package:openapi/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = CommunitiesApi();
-final addPlayer = AddPlayer(); // AddPlayer | 
+final api = Openapi().getCommunitiesApi();
+final AddPlayerRequestBody addPlayerRequestBody = ; // AddPlayerRequestBody | 
 
 try {
-    final result = api_instance.communitiesAddPlayerPost(addPlayer);
-    print(result);
-} catch (e) {
+    final response = api.communitiesAddPlayerPost(addPlayerRequestBody);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling CommunitiesApi->communitiesAddPlayerPost: $e\n');
 }
 ```
@@ -106,7 +93,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **addPlayer** | [**AddPlayer**](AddPlayer.md)|  | [optional] 
+ **addPlayerRequestBody** | [**AddPlayerRequestBody**](AddPlayerRequestBody.md)|  | [optional] 
 
 ### Return type
 
@@ -124,28 +111,21 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **communitiesChangeMemberRolePut**
-> Success communitiesChangeMemberRolePut(communityId, changeMemberRole)
+> Success communitiesChangeMemberRolePut(changeMemberRoleRequestBody)
 
 メンバーの権限を変更
 
 ### Example
 ```dart
 import 'package:openapi/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = CommunitiesApi();
-final communityId = communityId_example; // String | 
-final changeMemberRole = ChangeMemberRole(); // ChangeMemberRole | 
+final api = Openapi().getCommunitiesApi();
+final ChangeMemberRoleRequestBody changeMemberRoleRequestBody = ; // ChangeMemberRoleRequestBody | 
 
 try {
-    final result = api_instance.communitiesChangeMemberRolePut(communityId, changeMemberRole);
-    print(result);
-} catch (e) {
+    final response = api.communitiesChangeMemberRolePut(changeMemberRoleRequestBody);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling CommunitiesApi->communitiesChangeMemberRolePut: $e\n');
 }
 ```
@@ -154,8 +134,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **communityId** | **String**|  | 
- **changeMemberRole** | [**ChangeMemberRole**](ChangeMemberRole.md)|  | [optional] 
+ **changeMemberRoleRequestBody** | [**ChangeMemberRoleRequestBody**](ChangeMemberRoleRequestBody.md)|  | [optional] 
 
 ### Return type
 
@@ -173,27 +152,21 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **communitiesChangePlayerNumGamesPut**
-> Success communitiesChangePlayerNumGamesPut(changePlayerNumGames)
+> Success communitiesChangePlayerNumGamesPut(changePlayerNumGamesRequestBody)
 
 プレイヤーの試合数を変更
 
 ### Example
 ```dart
 import 'package:openapi/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = CommunitiesApi();
-final changePlayerNumGames = ChangePlayerNumGames(); // ChangePlayerNumGames | 
+final api = Openapi().getCommunitiesApi();
+final ChangePlayerNumGamesRequestBody changePlayerNumGamesRequestBody = ; // ChangePlayerNumGamesRequestBody | 
 
 try {
-    final result = api_instance.communitiesChangePlayerNumGamesPut(changePlayerNumGames);
-    print(result);
-} catch (e) {
+    final response = api.communitiesChangePlayerNumGamesPut(changePlayerNumGamesRequestBody);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling CommunitiesApi->communitiesChangePlayerNumGamesPut: $e\n');
 }
 ```
@@ -202,7 +175,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **changePlayerNumGames** | [**ChangePlayerNumGames**](ChangePlayerNumGames.md)|  | [optional] 
+ **changePlayerNumGamesRequestBody** | [**ChangePlayerNumGamesRequestBody**](ChangePlayerNumGamesRequestBody.md)|  | [optional] 
 
 ### Return type
 
@@ -220,27 +193,21 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **communitiesChangePlayerPropertyPut**
-> Success communitiesChangePlayerPropertyPut(changePlayerProperty)
+> Success communitiesChangePlayerPropertyPut(changePlayerPropertyRequestBody)
 
 プレイヤーのプロパティを変更
 
 ### Example
 ```dart
 import 'package:openapi/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = CommunitiesApi();
-final changePlayerProperty = ChangePlayerProperty(); // ChangePlayerProperty | 
+final api = Openapi().getCommunitiesApi();
+final ChangePlayerPropertyRequestBody changePlayerPropertyRequestBody = ; // ChangePlayerPropertyRequestBody | 
 
 try {
-    final result = api_instance.communitiesChangePlayerPropertyPut(changePlayerProperty);
-    print(result);
-} catch (e) {
+    final response = api.communitiesChangePlayerPropertyPut(changePlayerPropertyRequestBody);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling CommunitiesApi->communitiesChangePlayerPropertyPut: $e\n');
 }
 ```
@@ -249,7 +216,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **changePlayerProperty** | [**ChangePlayerProperty**](ChangePlayerProperty.md)|  | [optional] 
+ **changePlayerPropertyRequestBody** | [**ChangePlayerPropertyRequestBody**](ChangePlayerPropertyRequestBody.md)|  | [optional] 
 
 ### Return type
 
@@ -274,22 +241,16 @@ Name | Type | Description  | Notes
 ### Example
 ```dart
 import 'package:openapi/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = CommunitiesApi();
-final communityId = communityId_example; // String | 
-final numCourt = 56; // int | 
-final rule = ; // Rule | 
+final api = Openapi().getCommunitiesApi();
+final String communityId = communityId_example; // String | 
+final int numCourt = 56; // int | 
+final Rule rule = ; // Rule | 
 
 try {
-    final result = api_instance.communitiesCommunityIdGenerateMatchesGet(communityId, numCourt, rule);
-    print(result);
-} catch (e) {
+    final response = api.communitiesCommunityIdGenerateMatchesGet(communityId, numCourt, rule);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling CommunitiesApi->communitiesCommunityIdGenerateMatchesGet: $e\n');
 }
 ```
@@ -318,27 +279,21 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **communitiesCommunityIdGet**
-> CommunityList communitiesCommunityIdGet(communityId)
+> CommunityReadModel communitiesCommunityIdGet(communityId)
 
-コミュニティ一覧の取得
+コミュニティの取得
 
 ### Example
 ```dart
 import 'package:openapi/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = CommunitiesApi();
-final communityId = communityId_example; // String | 
+final api = Openapi().getCommunitiesApi();
+final String communityId = communityId_example; // String | 
 
 try {
-    final result = api_instance.communitiesCommunityIdGet(communityId);
-    print(result);
-} catch (e) {
+    final response = api.communitiesCommunityIdGet(communityId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling CommunitiesApi->communitiesCommunityIdGet: $e\n');
 }
 ```
@@ -351,7 +306,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CommunityList**](CommunityList.md)
+[**CommunityReadModel**](CommunityReadModel.md)
 
 ### Authorization
 
@@ -365,27 +320,21 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **communitiesCommunityIdMembersGet**
-> MemberList communitiesCommunityIdMembersGet(communityId)
+> BuiltList<MemberReadModel> communitiesCommunityIdMembersGet(communityId)
 
 メンバー一覧の取得
 
 ### Example
 ```dart
 import 'package:openapi/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = CommunitiesApi();
-final communityId = communityId_example; // String | 
+final api = Openapi().getCommunitiesApi();
+final String communityId = communityId_example; // String | 
 
 try {
-    final result = api_instance.communitiesCommunityIdMembersGet(communityId);
-    print(result);
-} catch (e) {
+    final response = api.communitiesCommunityIdMembersGet(communityId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling CommunitiesApi->communitiesCommunityIdMembersGet: $e\n');
 }
 ```
@@ -398,7 +347,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MemberList**](MemberList.md)
+[**BuiltList&lt;MemberReadModel&gt;**](MemberReadModel.md)
 
 ### Authorization
 
@@ -412,27 +361,21 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **communitiesCommunityIdPlayersGet**
-> PlayerList communitiesCommunityIdPlayersGet(communityId)
+> BuiltList<PlayerReadModel> communitiesCommunityIdPlayersGet(communityId)
 
 プレイヤー一覧の取得
 
 ### Example
 ```dart
 import 'package:openapi/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = CommunitiesApi();
-final communityId = communityId_example; // String | 
+final api = Openapi().getCommunitiesApi();
+final String communityId = communityId_example; // String | 
 
 try {
-    final result = api_instance.communitiesCommunityIdPlayersGet(communityId);
-    print(result);
-} catch (e) {
+    final response = api.communitiesCommunityIdPlayersGet(communityId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling CommunitiesApi->communitiesCommunityIdPlayersGet: $e\n');
 }
 ```
@@ -445,7 +388,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PlayerList**](PlayerList.md)
+[**BuiltList&lt;PlayerReadModel&gt;**](PlayerReadModel.md)
 
 ### Authorization
 
@@ -459,27 +402,21 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **communitiesCreateCommunityPost**
-> Success communitiesCreateCommunityPost(createCommunity)
+> Success communitiesCreateCommunityPost(createCommunityRequestBody)
 
 コミュニティの作成
 
 ### Example
 ```dart
 import 'package:openapi/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = CommunitiesApi();
-final createCommunity = CreateCommunity(); // CreateCommunity | 
+final api = Openapi().getCommunitiesApi();
+final CreateCommunityRequestBody createCommunityRequestBody = ; // CreateCommunityRequestBody | 
 
 try {
-    final result = api_instance.communitiesCreateCommunityPost(createCommunity);
-    print(result);
-} catch (e) {
+    final response = api.communitiesCreateCommunityPost(createCommunityRequestBody);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling CommunitiesApi->communitiesCreateCommunityPost: $e\n');
 }
 ```
@@ -488,7 +425,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createCommunity** | [**CreateCommunity**](CreateCommunity.md)|  | [optional] 
+ **createCommunityRequestBody** | [**CreateCommunityRequestBody**](CreateCommunityRequestBody.md)|  | [optional] 
 
 ### Return type
 
@@ -506,27 +443,21 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **communitiesDeleteCommunityPost**
-> Success communitiesDeleteCommunityPost(deleteCommunity)
+> Success communitiesDeleteCommunityPost(deleteCommunityRequestBody)
 
 コミュニティの削除
 
 ### Example
 ```dart
 import 'package:openapi/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = CommunitiesApi();
-final deleteCommunity = DeleteCommunity(); // DeleteCommunity | 
+final api = Openapi().getCommunitiesApi();
+final DeleteCommunityRequestBody deleteCommunityRequestBody = ; // DeleteCommunityRequestBody | 
 
 try {
-    final result = api_instance.communitiesDeleteCommunityPost(deleteCommunity);
-    print(result);
-} catch (e) {
+    final response = api.communitiesDeleteCommunityPost(deleteCommunityRequestBody);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling CommunitiesApi->communitiesDeleteCommunityPost: $e\n');
 }
 ```
@@ -535,7 +466,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deleteCommunity** | [**DeleteCommunity**](DeleteCommunity.md)|  | [optional] 
+ **deleteCommunityRequestBody** | [**DeleteCommunityRequestBody**](DeleteCommunityRequestBody.md)|  | [optional] 
 
 ### Return type
 
@@ -553,27 +484,21 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **communitiesEditCommunityDescriptionPut**
-> Success communitiesEditCommunityDescriptionPut(editCommunityDescription)
+> Success communitiesEditCommunityDescriptionPut(editCommunityDescriptionRequestBody)
 
 コミュニティの説明文の変更
 
 ### Example
 ```dart
 import 'package:openapi/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = CommunitiesApi();
-final editCommunityDescription = EditCommunityDescription(); // EditCommunityDescription | 
+final api = Openapi().getCommunitiesApi();
+final EditCommunityDescriptionRequestBody editCommunityDescriptionRequestBody = ; // EditCommunityDescriptionRequestBody | 
 
 try {
-    final result = api_instance.communitiesEditCommunityDescriptionPut(editCommunityDescription);
-    print(result);
-} catch (e) {
+    final response = api.communitiesEditCommunityDescriptionPut(editCommunityDescriptionRequestBody);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling CommunitiesApi->communitiesEditCommunityDescriptionPut: $e\n');
 }
 ```
@@ -582,7 +507,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **editCommunityDescription** | [**EditCommunityDescription**](EditCommunityDescription.md)|  | [optional] 
+ **editCommunityDescriptionRequestBody** | [**EditCommunityDescriptionRequestBody**](EditCommunityDescriptionRequestBody.md)|  | [optional] 
 
 ### Return type
 
@@ -599,29 +524,59 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **communitiesGet**
+> BuiltList<CommunityReadModel> communitiesGet()
+
+コミュニティ一覧の取得
+
+### Example
+```dart
+import 'package:openapi/api.dart';
+
+final api = Openapi().getCommunitiesApi();
+
+try {
+    final response = api.communitiesGet();
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling CommunitiesApi->communitiesGet: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**BuiltList&lt;CommunityReadModel&gt;**](CommunityReadModel.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **communitiesRemoveMemberPost**
-> Success communitiesRemoveMemberPost(communityId, removeMember)
+> Success communitiesRemoveMemberPost(removeMemberRequestBody)
 
 コミュニティからメンバーを削除
 
 ### Example
 ```dart
 import 'package:openapi/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = CommunitiesApi();
-final communityId = communityId_example; // String | 
-final removeMember = RemoveMember(); // RemoveMember | 
+final api = Openapi().getCommunitiesApi();
+final RemoveMemberRequestBody removeMemberRequestBody = ; // RemoveMemberRequestBody | 
 
 try {
-    final result = api_instance.communitiesRemoveMemberPost(communityId, removeMember);
-    print(result);
-} catch (e) {
+    final response = api.communitiesRemoveMemberPost(removeMemberRequestBody);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling CommunitiesApi->communitiesRemoveMemberPost: $e\n');
 }
 ```
@@ -630,8 +585,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **communityId** | **String**|  | 
- **removeMember** | [**RemoveMember**](RemoveMember.md)|  | [optional] 
+ **removeMemberRequestBody** | [**RemoveMemberRequestBody**](RemoveMemberRequestBody.md)|  | [optional] 
 
 ### Return type
 
@@ -649,27 +603,21 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **communitiesRemovePlayerPost**
-> Success communitiesRemovePlayerPost(removePlayer)
+> Success communitiesRemovePlayerPost(removePlayerRequestBody)
 
 コミュニティからプレイヤーを削除
 
 ### Example
 ```dart
 import 'package:openapi/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = CommunitiesApi();
-final removePlayer = RemovePlayer(); // RemovePlayer | 
+final api = Openapi().getCommunitiesApi();
+final RemovePlayerRequestBody removePlayerRequestBody = ; // RemovePlayerRequestBody | 
 
 try {
-    final result = api_instance.communitiesRemovePlayerPost(removePlayer);
-    print(result);
-} catch (e) {
+    final response = api.communitiesRemovePlayerPost(removePlayerRequestBody);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling CommunitiesApi->communitiesRemovePlayerPost: $e\n');
 }
 ```
@@ -678,7 +626,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **removePlayer** | [**RemovePlayer**](RemovePlayer.md)|  | [optional] 
+ **removePlayerRequestBody** | [**RemovePlayerRequestBody**](RemovePlayerRequestBody.md)|  | [optional] 
 
 ### Return type
 
@@ -696,27 +644,21 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **communitiesRenameCommunityPut**
-> Success communitiesRenameCommunityPut(renameCommunity)
+> Success communitiesRenameCommunityPut(renameCommunityRequestBody)
 
 コミュニティ名の変更
 
 ### Example
 ```dart
 import 'package:openapi/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = CommunitiesApi();
-final renameCommunity = RenameCommunity(); // RenameCommunity | 
+final api = Openapi().getCommunitiesApi();
+final RenameCommunityRequestBody renameCommunityRequestBody = ; // RenameCommunityRequestBody | 
 
 try {
-    final result = api_instance.communitiesRenameCommunityPut(renameCommunity);
-    print(result);
-} catch (e) {
+    final response = api.communitiesRenameCommunityPut(renameCommunityRequestBody);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling CommunitiesApi->communitiesRenameCommunityPut: $e\n');
 }
 ```
@@ -725,7 +667,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **renameCommunity** | [**RenameCommunity**](RenameCommunity.md)|  | [optional] 
+ **renameCommunityRequestBody** | [**RenameCommunityRequestBody**](RenameCommunityRequestBody.md)|  | [optional] 
 
 ### Return type
 
@@ -743,27 +685,21 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **communitiesResetPlayerNumGamesPut**
-> Success communitiesResetPlayerNumGamesPut(resetPlayerNumGames)
+> Success communitiesResetPlayerNumGamesPut(resetPlayerNumGamesRequestBody)
 
 プレイヤーの試合数をリセット
 
 ### Example
 ```dart
 import 'package:openapi/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = CommunitiesApi();
-final resetPlayerNumGames = ResetPlayerNumGames(); // ResetPlayerNumGames | 
+final api = Openapi().getCommunitiesApi();
+final ResetPlayerNumGamesRequestBody resetPlayerNumGamesRequestBody = ; // ResetPlayerNumGamesRequestBody | 
 
 try {
-    final result = api_instance.communitiesResetPlayerNumGamesPut(resetPlayerNumGames);
-    print(result);
-} catch (e) {
+    final response = api.communitiesResetPlayerNumGamesPut(resetPlayerNumGamesRequestBody);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling CommunitiesApi->communitiesResetPlayerNumGamesPut: $e\n');
 }
 ```
@@ -772,7 +708,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resetPlayerNumGames** | [**ResetPlayerNumGames**](ResetPlayerNumGames.md)|  | [optional] 
+ **resetPlayerNumGamesRequestBody** | [**ResetPlayerNumGamesRequestBody**](ResetPlayerNumGamesRequestBody.md)|  | [optional] 
 
 ### Return type
 

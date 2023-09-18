@@ -8,7 +8,7 @@ import 'package:openapi/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**communities** | [**List<CommunityReadModel>**](CommunityReadModel.md) |  | [optional] [default to const []]
+**communities** | [**BuiltList&lt;CommunityReadModel&gt;**](CommunityReadModel.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
