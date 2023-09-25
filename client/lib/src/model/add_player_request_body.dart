@@ -14,6 +14,7 @@ part 'add_player_request_body.g.dart';
 /// AddPlayerRequestBody
 ///
 /// Properties:
+/// * [communityId] 
 /// * [name] 
 /// * [gender] 
 /// * [age] 
@@ -22,6 +23,9 @@ part 'add_player_request_body.g.dart';
 /// * [status] 
 @BuiltValue()
 abstract class AddPlayerRequestBody implements Built<AddPlayerRequestBody, AddPlayerRequestBodyBuilder> {
+  @BuiltValueField(wireName: r'community_id')
+  String? get communityId;
+
   @BuiltValueField(wireName: r'name')
   String? get name;
 
@@ -66,6 +70,13 @@ class _$AddPlayerRequestBodySerializer implements PrimitiveSerializer<AddPlayerR
     AddPlayerRequestBody object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    if (object.communityId != null) {
+      yield r'community_id';
+      yield serializers.serialize(
+        object.communityId,
+        specifiedType: const FullType(String),
+      );
+    }
     if (object.name != null) {
       yield r'name';
       yield serializers.serialize(
@@ -131,6 +142,13 @@ class _$AddPlayerRequestBodySerializer implements PrimitiveSerializer<AddPlayerR
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'community_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.communityId = valueDes;
+          break;
         case r'name':
           final valueDes = serializers.deserialize(
             value,

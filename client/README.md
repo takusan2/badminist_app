@@ -120,6 +120,7 @@ Class | Method | HTTP request | Description
  - [TemporaryRegistrationRequestBody](doc/TemporaryRegistrationRequestBody.md)
  - [Token](doc/Token.md)
  - [UserReadModel](doc/UserReadModel.md)
+ - [UserStatus](doc/UserStatus.md)
 
 
 ## Documentation For Authorization

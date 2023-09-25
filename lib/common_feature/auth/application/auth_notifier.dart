@@ -3,6 +3,8 @@ import 'package:badminist_app/services/dio_service.dart';
 import 'package:badminist_app/services/secure_storage/secure_storage_data_source.dart';
 import 'package:badminist_app/services/secure_storage/secure_storage_key.dart';
 import 'package:badminist_app/services/secure_storage/secure_storage_repository.dart';
+import 'package:badminist_app/utils/exception/api_exception.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:openapi/openapi.dart';
@@ -42,8 +44,56 @@ class AuthNotifier extends AsyncNotifier<UserReadModel?> {
         await secureStorageRepository.save(SecureStorageKey.token, token);
       }
       await setUser();
+    } on DioException catch (e) {
+      throw ApiException(e.response?.data.toString());
     } on Exception catch (e) {
       debugPrint('login: ${e.toString()}');
+    }
+  }
+
+  Future<void> temporaryRegistration({
+    required String name,
+    required String email,
+    required String password,
+  }) async {
+    try {
+      final token = await authApi.authTemporaryRegistrationPost(
+        temporaryRegistrationRequestBody: TemporaryRegistrationRequestBody(
+          (b) => b
+            ..name = name
+            ..email = email
+            ..password = password,
+        ),
+      );
+      await secureStorageRepository.save(
+        SecureStorageKey.token,
+        token.data?.token,
+      );
+      await setUser();
+    } on DioException catch (e) {
+      throw ApiException(e.response?.data.toString());
+    } on Exception catch (e) {
+      throw Exception(e.toString());
+    }
+  }
+
+  Future<void> activate({
+    required String email,
+    required String confirmPass,
+  }) async {
+    try {
+      await authApi.authActivateUserPost(
+        activateUserRequestBody: ActivateUserRequestBody(
+          (b) => b
+            ..email = email
+            ..confirmPass = confirmPass,
+        ),
+      );
+      await setUser();
+    } on DioException catch (e) {
+      debugPrint('activate: ${e.response?.data.toString()}');
+    } on Exception catch (e) {
+      debugPrint('activate: ${e.toString()}');
     }
   }
 
@@ -76,7 +126,10 @@ class AuthNotifier extends AsyncNotifier<UserReadModel?> {
   }
 
   Future<void> setUser() async {
-    state = AsyncValue.data(await fetchUser());
+    state = const AsyncLoading<UserReadModel?>().copyWithPrevious(state);
+    state = await AsyncValue.guard(
+      () async => await fetchUser(),
+    );
   }
 
   Future<void> unSetUser() async {

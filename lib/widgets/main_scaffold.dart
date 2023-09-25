@@ -1,10 +1,12 @@
+import 'package:badminist_app/constant/constant.dart';
 import 'package:flutter/material.dart';
 
 class MainScaffold extends StatelessWidget {
   const MainScaffold({
     super.key,
     required this.body,
-    this.appBar,
+    this.appBarTitle,
+    this.appBarActions,
     this.floatingActionButton,
     this.floatingActionButtonLocation,
     this.floatingActionButtonAnimator,
@@ -15,7 +17,8 @@ class MainScaffold extends StatelessWidget {
   });
 
   final Widget body;
-  final AppBar? appBar;
+  final String? appBarTitle;
+  final List<Widget>? appBarActions;
   final Widget? floatingActionButton;
   final FloatingActionButtonLocation? floatingActionButtonLocation;
   final FloatingActionButtonAnimator? floatingActionButtonAnimator;
@@ -27,7 +30,17 @@ class MainScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar,
+      appBar: AppBar(
+        title: Text(
+          appBarTitle ?? Constant.title,
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.onPrimary,
+            fontSize: 24,
+          ),
+        ),
+        actions: appBarActions,
+        centerTitle: true,
+      ),
       floatingActionButton: floatingActionButton,
       floatingActionButtonLocation: floatingActionButtonLocation,
       floatingActionButtonAnimator: floatingActionButtonAnimator,

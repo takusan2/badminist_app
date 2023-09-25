@@ -8,6 +8,7 @@ import 'package:openapi/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**communityId** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
 **gender** | [**PlayerGender**](PlayerGender.md) |  | [optional] 
 **age** | **int** |  | [optional] 

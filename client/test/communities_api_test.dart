@@ -49,23 +49,23 @@ void main() {
       // TODO
     });
 
-    // コミュニティ一覧の取得
+    // コミュニティの取得
     //
-    //Future<CommunityList> communitiesCommunityIdGet(String communityId) async
+    //Future<CommunityReadModel> communitiesCommunityIdGet(String communityId) async
     test('test communitiesCommunityIdGet', () async {
       // TODO
     });
 
     // メンバー一覧の取得
     //
-    //Future<MemberList> communitiesCommunityIdMembersGet(String communityId) async
+    //Future<BuiltList<MemberReadModel>> communitiesCommunityIdMembersGet(String communityId) async
     test('test communitiesCommunityIdMembersGet', () async {
       // TODO
     });
 
     // プレイヤー一覧の取得
     //
-    //Future<PlayerList> communitiesCommunityIdPlayersGet(String communityId) async
+    //Future<BuiltList<PlayerReadModel>> communitiesCommunityIdPlayersGet(String communityId) async
     test('test communitiesCommunityIdPlayersGet', () async {
       // TODO
     });
@@ -88,6 +88,13 @@ void main() {
     //
     //Future<Success> communitiesEditCommunityDescriptionPut({ EditCommunityDescriptionRequestBody editCommunityDescriptionRequestBody }) async
     test('test communitiesEditCommunityDescriptionPut', () async {
+      // TODO
+    });
+
+    // コミュニティ一覧の取得
+    //
+    //Future<BuiltList<CommunityReadModel>> communitiesGet() async
+    test('test communitiesGet', () async {
       // TODO
     });
 

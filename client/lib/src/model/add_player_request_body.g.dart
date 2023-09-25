@@ -8,6 +8,8 @@ part of 'add_player_request_body.dart';
 
 class _$AddPlayerRequestBody extends AddPlayerRequestBody {
   @override
+  final String? communityId;
+  @override
   final String? name;
   @override
   final PlayerGender? gender;
@@ -25,7 +27,8 @@ class _$AddPlayerRequestBody extends AddPlayerRequestBody {
       (new AddPlayerRequestBodyBuilder()..update(updates))._build();
 
   _$AddPlayerRequestBody._(
-      {this.name,
+      {this.communityId,
+      this.name,
       this.gender,
       this.age,
       this.level,
@@ -46,6 +49,7 @@ class _$AddPlayerRequestBody extends AddPlayerRequestBody {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is AddPlayerRequestBody &&
+        communityId == other.communityId &&
         name == other.name &&
         gender == other.gender &&
         age == other.age &&
@@ -57,6 +61,7 @@ class _$AddPlayerRequestBody extends AddPlayerRequestBody {
   @override
   int get hashCode {
     var _$hash = 0;
+    _$hash = $jc(_$hash, communityId.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, gender.hashCode);
     _$hash = $jc(_$hash, age.hashCode);
@@ -70,6 +75,7 @@ class _$AddPlayerRequestBody extends AddPlayerRequestBody {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'AddPlayerRequestBody')
+          ..add('communityId', communityId)
           ..add('name', name)
           ..add('gender', gender)
           ..add('age', age)
@@ -83,6 +89,10 @@ class _$AddPlayerRequestBody extends AddPlayerRequestBody {
 class AddPlayerRequestBodyBuilder
     implements Builder<AddPlayerRequestBody, AddPlayerRequestBodyBuilder> {
   _$AddPlayerRequestBody? _$v;
+
+  String? _communityId;
+  String? get communityId => _$this._communityId;
+  set communityId(String? communityId) => _$this._communityId = communityId;
 
   String? _name;
   String? get name => _$this._name;
@@ -115,6 +125,7 @@ class AddPlayerRequestBodyBuilder
   AddPlayerRequestBodyBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _communityId = $v.communityId;
       _name = $v.name;
       _gender = $v.gender;
       _age = $v.age;
@@ -143,6 +154,7 @@ class AddPlayerRequestBodyBuilder
   _$AddPlayerRequestBody _build() {
     final _$result = _$v ??
         new _$AddPlayerRequestBody._(
+            communityId: communityId,
             name: name,
             gender: gender,
             age: age,

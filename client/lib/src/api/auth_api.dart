@@ -10,7 +10,6 @@ import 'package:dio/dio.dart';
 import 'package:openapi/src/model/activate_user_request_body.dart';
 import 'package:openapi/src/model/failure.dart';
 import 'package:openapi/src/model/login_request_body.dart';
-import 'package:openapi/src/model/success.dart';
 import 'package:openapi/src/model/temporary_registration_request_body.dart';
 import 'package:openapi/src/model/token.dart';
 import 'package:openapi/src/model/user_read_model.dart';
@@ -225,9 +224,9 @@ class AuthApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [Success] as data
+  /// Returns a [Future] containing a [Response] with a [Token] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Success>> authTemporaryRegistrationPost({ 
+  Future<Response<Token>> authTemporaryRegistrationPost({ 
     TemporaryRegistrationRequestBody? temporaryRegistrationRequestBody,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -277,14 +276,14 @@ class AuthApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    Success? _responseData;
+    Token? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(Success),
-      ) as Success;
+        specifiedType: const FullType(Token),
+      ) as Token;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -296,7 +295,7 @@ class AuthApi {
       );
     }
 
-    return Response<Success>(
+    return Response<Token>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

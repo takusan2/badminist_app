@@ -43,3 +43,4 @@ export 'package:openapi/src/model/team.dart';
 export 'package:openapi/src/model/temporary_registration_request_body.dart';
 export 'package:openapi/src/model/token.dart';
 export 'package:openapi/src/model/user_read_model.dart';
+export 'package:openapi/src/model/user_status.dart';

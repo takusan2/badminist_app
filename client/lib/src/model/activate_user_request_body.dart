@@ -18,7 +18,7 @@ abstract class ActivateUserRequestBody implements Built<ActivateUserRequestBody,
   @BuiltValueField(wireName: r'email')
   String? get email;
 
-  @BuiltValueField(wireName: r'confirmPass')
+  @BuiltValueField(wireName: r'confirm_pass')
   String? get confirmPass;
 
   ActivateUserRequestBody._();
@@ -52,7 +52,7 @@ class _$ActivateUserRequestBodySerializer implements PrimitiveSerializer<Activat
       );
     }
     if (object.confirmPass != null) {
-      yield r'confirmPass';
+      yield r'confirm_pass';
       yield serializers.serialize(
         object.confirmPass,
         specifiedType: const FullType(String),
@@ -88,7 +88,7 @@ class _$ActivateUserRequestBodySerializer implements PrimitiveSerializer<Activat
           ) as String;
           result.email = valueDes;
           break;
-        case r'confirmPass':
+        case r'confirm_pass':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),

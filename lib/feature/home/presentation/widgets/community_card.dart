@@ -1,4 +1,4 @@
-import 'package:badminist_app/feature/home/presentation/widget/flippable_card.dart';
+import 'package:badminist_app/feature/home/presentation/widgets/flippable_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -8,28 +8,39 @@ class CommunityCard extends HookConsumerWidget {
     super.key,
     required this.name,
     required this.description,
+    this.onTapCard,
+    this.onDeleteIconPressed,
+    this.onEditIconPressed,
   });
 
   final String name;
   final String description;
+  final void Function()? onTapCard;
+  final void Function()? onDeleteIconPressed;
+  final void Function()? onEditIconPressed;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isFlipped = useState(false);
-    return FlippableCard(
-      front: Front(
-        name: name,
-        description: description,
-        onPressed: () {
-          isFlipped.value = true;
-        },
+    return GestureDetector(
+      onTap: isFlipped.value ? null : onTapCard,
+      child: FlippableCard(
+        front: Front(
+          name: name,
+          description: description,
+          onPressed: () {
+            isFlipped.value = true;
+          },
+        ),
+        back: Back(
+          onPressed: () {
+            isFlipped.value = false;
+          },
+          onDeleteIconPressed: onDeleteIconPressed,
+          onEditIconPressed: onEditIconPressed,
+        ),
+        isFlipped: isFlipped.value,
       ),
-      back: Back(
-        onPressed: () {
-          isFlipped.value = false;
-        },
-      ),
-      isFlipped: isFlipped.value,
     );
   }
 }
@@ -38,9 +49,13 @@ class Back extends StatelessWidget {
   const Back({
     super.key,
     this.onPressed,
+    this.onDeleteIconPressed,
+    this.onEditIconPressed,
   });
 
   final void Function()? onPressed;
+  final void Function()? onDeleteIconPressed;
+  final void Function()? onEditIconPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +77,7 @@ class Back extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: onEditIconPressed,
                   icon: Icon(
                     Icons.edit,
                     color: Theme.of(context).colorScheme.secondary,
@@ -71,9 +86,7 @@ class Back extends StatelessWidget {
                 ),
                 const SizedBox(width: 40),
                 IconButton(
-                  onPressed: () {
-                    debugPrint('delete pressed');
-                  },
+                  onPressed: onDeleteIconPressed,
                   icon: Icon(
                     Icons.delete,
                     color: Theme.of(context).colorScheme.error,

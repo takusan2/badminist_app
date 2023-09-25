@@ -14,6 +14,8 @@ class _$UserReadModel extends UserReadModel {
   @override
   final String? email;
   @override
+  final UserStatus? status;
+  @override
   final String? createdAt;
   @override
   final String? updatedAt;
@@ -22,7 +24,12 @@ class _$UserReadModel extends UserReadModel {
       (new UserReadModelBuilder()..update(updates))._build();
 
   _$UserReadModel._(
-      {this.id, this.name, this.email, this.createdAt, this.updatedAt})
+      {this.id,
+      this.name,
+      this.email,
+      this.status,
+      this.createdAt,
+      this.updatedAt})
       : super._();
 
   @override
@@ -39,6 +46,7 @@ class _$UserReadModel extends UserReadModel {
         id == other.id &&
         name == other.name &&
         email == other.email &&
+        status == other.status &&
         createdAt == other.createdAt &&
         updatedAt == other.updatedAt;
   }
@@ -49,6 +57,7 @@ class _$UserReadModel extends UserReadModel {
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, email.hashCode);
+    _$hash = $jc(_$hash, status.hashCode);
     _$hash = $jc(_$hash, createdAt.hashCode);
     _$hash = $jc(_$hash, updatedAt.hashCode);
     _$hash = $jf(_$hash);
@@ -61,6 +70,7 @@ class _$UserReadModel extends UserReadModel {
           ..add('id', id)
           ..add('name', name)
           ..add('email', email)
+          ..add('status', status)
           ..add('createdAt', createdAt)
           ..add('updatedAt', updatedAt))
         .toString();
@@ -83,6 +93,10 @@ class UserReadModelBuilder
   String? get email => _$this._email;
   set email(String? email) => _$this._email = email;
 
+  UserStatus? _status;
+  UserStatus? get status => _$this._status;
+  set status(UserStatus? status) => _$this._status = status;
+
   String? _createdAt;
   String? get createdAt => _$this._createdAt;
   set createdAt(String? createdAt) => _$this._createdAt = createdAt;
@@ -101,6 +115,7 @@ class UserReadModelBuilder
       _id = $v.id;
       _name = $v.name;
       _email = $v.email;
+      _status = $v.status;
       _createdAt = $v.createdAt;
       _updatedAt = $v.updatedAt;
       _$v = null;
@@ -128,6 +143,7 @@ class UserReadModelBuilder
             id: id,
             name: name,
             email: email,
+            status: status,
             createdAt: createdAt,
             updatedAt: updatedAt);
     replace(_$result);

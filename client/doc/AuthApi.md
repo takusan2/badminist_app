@@ -97,7 +97,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **authTemporaryRegistrationPost**
-> Success authTemporaryRegistrationPost(temporaryRegistrationRequestBody)
+> Token authTemporaryRegistrationPost(temporaryRegistrationRequestBody)
 
 仮登録
 
@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Success**](Success.md)
+[**Token**](Token.md)
 
 ### Authorization
 

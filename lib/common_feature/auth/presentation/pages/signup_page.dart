@@ -1,18 +1,18 @@
 import 'package:badminist_app/common_feature/auth/application/auth_notifier.dart';
-import 'package:badminist_app/common_feature/auth/presentation/pages/signup_page.dart';
 import 'package:badminist_app/utils/validator/validator.dart';
 import 'package:badminist_app/widgets/main_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class LoginPage extends HookConsumerWidget {
-  LoginPage({super.key});
+class SignUpPage extends HookConsumerWidget {
+  SignUpPage({super.key});
 
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final name = useState('');
     final email = useState('');
     final password = useState('');
     final errorMessage = useState('');
@@ -24,7 +24,7 @@ class LoginPage extends HookConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              'ログイン',
+              'サインアップ',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -37,8 +37,18 @@ class LoginPage extends HookConsumerWidget {
               child: Column(
                 children: [
                   TextFormField(
-                    onSaved: (newValue) => email.value = newValue!,
-                    validator: (value) => Validator.validateEmail(value!),
+                      decoration: InputDecoration(
+                        labelText: 'Name',
+                        filled: true,
+                        fillColor: Theme.of(context).colorScheme.onBackground,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      onSaved: (newValue) => name.value = newValue!,
+                      validator: (value) => Validator.nullCheck(value!)),
+                  const SizedBox(height: 30),
+                  TextFormField(
                     decoration: InputDecoration(
                       labelText: 'Email',
                       filled: true,
@@ -47,14 +57,11 @@ class LoginPage extends HookConsumerWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
+                    onSaved: (newValue) => email.value = newValue!,
+                    validator: (value) => Validator.validateEmail(value!),
                   ),
                   const SizedBox(height: 30),
                   TextFormField(
-                    onSaved: (newValue) => password.value = newValue!,
-                    validator: (value) => Validator.nullCheck(
-                      value!,
-                      message: "パスワードを入力してください",
-                    ),
                     decoration: InputDecoration(
                       labelText: 'Password',
                       filled: true,
@@ -62,6 +69,11 @@ class LoginPage extends HookConsumerWidget {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
+                    ),
+                    onSaved: (newValue) => password.value = newValue!,
+                    validator: (value) => Validator.nullCheck(
+                      value!,
+                      message: "パスワードを入力してください",
                     ),
                   ),
                 ],
@@ -83,8 +95,13 @@ class LoginPage extends HookConsumerWidget {
                   _formKey.currentState!.save();
                   await ref
                       .read(authProvider.notifier)
-                      .login(email.value, password.value)
-                      .onError<Exception>((error, stackTrace) {
+                      .temporaryRegistration(
+                        name: name.value,
+                        email: email.value,
+                        password: password.value,
+                      )
+                      .then((value) => Navigator.of(context).pop())
+                      .onError((error, stackTrace) {
                     errorMessage.value = error.toString();
                   });
                 }
@@ -93,7 +110,7 @@ class LoginPage extends HookConsumerWidget {
                 backgroundColor: Theme.of(context).colorScheme.secondary,
               ),
               child: Text(
-                'ログイン',
+                'サインアップ',
                 style: TextStyle(
                   fontSize: 24,
                   color: Theme.of(context).colorScheme.onSecondary,
@@ -103,14 +120,10 @@ class LoginPage extends HookConsumerWidget {
             const SizedBox(height: 30),
             TextButton(
               onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => SignUpPage(),
-                  ),
-                );
+                Navigator.of(context).pop();
               },
               child: Text(
-                'アカウントをお持ちでない方はこちら',
+                'アカウントをすでにお持ちの方はこちら',
                 style: TextStyle(
                   fontSize: 16,
                   color: Theme.of(context).colorScheme.primary,

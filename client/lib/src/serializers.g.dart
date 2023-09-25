@@ -37,6 +37,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(TemporaryRegistrationRequestBody.serializer)
       ..add(Token.serializer)
       ..add(UserReadModel.serializer)
+      ..add(UserStatus.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Match)]),
           () => new ListBuilder<Match>())

@@ -44,6 +44,7 @@ import 'package:openapi/src/model/team.dart';
 import 'package:openapi/src/model/temporary_registration_request_body.dart';
 import 'package:openapi/src/model/token.dart';
 import 'package:openapi/src/model/user_read_model.dart';
+import 'package:openapi/src/model/user_status.dart';
 
 part 'serializers.g.dart';
 
@@ -78,6 +79,7 @@ part 'serializers.g.dart';
   TemporaryRegistrationRequestBody,
   Token,
   UserReadModel,
+  UserStatus,
 ])
 Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(

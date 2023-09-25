@@ -1,21 +1,19 @@
 import 'package:badminist_app/common_feature/auth/application/auth_notifier.dart';
 import 'package:badminist_app/common_feature/auth/presentation/pages/signup_page.dart';
-import 'package:badminist_app/utils/validator/validator.dart';
 import 'package:badminist_app/widgets/main_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class LoginPage extends HookConsumerWidget {
-  LoginPage({super.key});
+class ConfirmPage extends HookConsumerWidget {
+  ConfirmPage({super.key});
 
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final email = useState('');
-    final password = useState('');
-    final errorMessage = useState('');
+    final confirmPass = useState('');
+    final user = ref.watch(authProvider).asData!.value;
     return MainScaffold(
       body: Padding(
         padding: const EdgeInsets.all(30),
@@ -24,76 +22,48 @@ class LoginPage extends HookConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              'ログイン',
+              '${user!.email}に確認コードを送信しました',
               style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
+                fontSize: 15,
                 color: Theme.of(context).colorScheme.primary,
               ),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 10),
             Form(
               key: _formKey,
               child: Column(
                 children: [
-                  TextFormField(
-                    onSaved: (newValue) => email.value = newValue!,
-                    validator: (value) => Validator.validateEmail(value!),
-                    decoration: InputDecoration(
-                      labelText: 'Email',
-                      filled: true,
-                      fillColor: Theme.of(context).colorScheme.onBackground,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  ),
                   const SizedBox(height: 30),
                   TextFormField(
-                    onSaved: (newValue) => password.value = newValue!,
-                    validator: (value) => Validator.nullCheck(
-                      value!,
-                      message: "パスワードを入力してください",
-                    ),
                     decoration: InputDecoration(
-                      labelText: 'Password',
+                      labelText: '確認コード',
                       filled: true,
                       fillColor: Theme.of(context).colorScheme.onBackground,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
+                    onSaved: (newValue) => confirmPass.value = newValue!,
+                    validator: (value) => value!.isEmpty ? '入力してください' : null,
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 15),
-            if (errorMessage.value.isNotEmpty)
-              Text(
-                errorMessage.value,
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.error,
-                ),
-              ),
-            const SizedBox(height: 15),
+            const SizedBox(height: 30),
             TextButton(
               onPressed: () async {
-                errorMessage.value = '';
                 if (_formKey.currentState!.validate()) {
                   _formKey.currentState!.save();
-                  await ref
-                      .read(authProvider.notifier)
-                      .login(email.value, password.value)
-                      .onError<Exception>((error, stackTrace) {
-                    errorMessage.value = error.toString();
-                  });
+
+                  await ref.read(authProvider.notifier).activate(
+                      email: user.email!, confirmPass: confirmPass.value);
                 }
               },
               style: TextButton.styleFrom(
                 backgroundColor: Theme.of(context).colorScheme.secondary,
               ),
               child: Text(
-                'ログイン',
+                '送信',
                 style: TextStyle(
                   fontSize: 24,
                   color: Theme.of(context).colorScheme.onSecondary,
@@ -101,6 +71,30 @@ class LoginPage extends HookConsumerWidget {
               ),
             ),
             const SizedBox(height: 30),
+            TextButton(
+              onPressed: () {
+                // TODO: 再送信するようにする
+              },
+              child: Text(
+                '確認コードを再送信する',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                ref.read(authProvider.notifier).logout();
+              },
+              child: Text(
+                'アカウントをすでにお持ちの方はこちら',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+            ),
             TextButton(
               onPressed: () {
                 Navigator.of(context).push(

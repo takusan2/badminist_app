@@ -33,6 +33,7 @@ doc/Team.md
 doc/TemporaryRegistrationRequestBody.md
 doc/Token.md
 doc/UserReadModel.md
+doc/UserStatus.md
 doc/UsersApi.md
 lib/openapi.dart
 lib/src/api.dart
@@ -77,5 +78,6 @@ lib/src/model/team.dart
 lib/src/model/temporary_registration_request_body.dart
 lib/src/model/token.dart
 lib/src/model/user_read_model.dart
+lib/src/model/user_status.dart
 lib/src/serializers.dart
 pubspec.yaml

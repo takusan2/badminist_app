@@ -3,6 +3,7 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:openapi/src/model/user_status.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -14,6 +15,7 @@ part 'user_read_model.g.dart';
 /// * [id] 
 /// * [name] 
 /// * [email] 
+/// * [status] 
 /// * [createdAt] 
 /// * [updatedAt] 
 @BuiltValue()
@@ -26,6 +28,10 @@ abstract class UserReadModel implements Built<UserReadModel, UserReadModelBuilde
 
   @BuiltValueField(wireName: r'email')
   String? get email;
+
+  @BuiltValueField(wireName: r'status')
+  UserStatus? get status;
+  // enum statusEnum {  inactive,  active,  };
 
   @BuiltValueField(wireName: r'created_at')
   String? get createdAt;
@@ -75,6 +81,13 @@ class _$UserReadModelSerializer implements PrimitiveSerializer<UserReadModel> {
       yield serializers.serialize(
         object.email,
         specifiedType: const FullType(String),
+      );
+    }
+    if (object.status != null) {
+      yield r'status';
+      yield serializers.serialize(
+        object.status,
+        specifiedType: const FullType(UserStatus),
       );
     }
     if (object.createdAt != null) {
@@ -134,6 +147,13 @@ class _$UserReadModelSerializer implements PrimitiveSerializer<UserReadModel> {
             specifiedType: const FullType(String),
           ) as String;
           result.email = valueDes;
+          break;
+        case r'status':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(UserStatus),
+          ) as UserStatus;
+          result.status = valueDes;
           break;
         case r'created_at':
           final valueDes = serializers.deserialize(
