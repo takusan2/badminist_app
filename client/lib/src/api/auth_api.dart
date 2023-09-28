@@ -8,14 +8,12 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:openapi/src/model/activate_user_request_body.dart';
-import 'package:openapi/src/model/failure.dart';
 import 'package:openapi/src/model/login_request_body.dart';
 import 'package:openapi/src/model/temporary_registration_request_body.dart';
 import 'package:openapi/src/model/token.dart';
 import 'package:openapi/src/model/user_read_model.dart';
 
 class AuthApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -23,10 +21,10 @@ class AuthApi {
   const AuthApi(this._dio, this._serializers);
 
   /// 本登録
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [activateUserRequestBody] 
+  /// * [activateUserRequestBody]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -36,7 +34,7 @@ class AuthApi {
   ///
   /// Returns a [Future] containing a [Response] with a [UserReadModel] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UserReadModel>> authActivateUserPost({ 
+  Future<Response<UserReadModel>> authActivateUserPost({
     ActivateUserRequestBody? activateUserRequestBody,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -63,11 +61,13 @@ class AuthApi {
 
     try {
       const _type = FullType(ActivateUserRequestBody);
-      _bodyData = activateUserRequestBody == null ? null : _serializers.serialize(activateUserRequestBody, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = activateUserRequestBody == null
+          ? null
+          : _serializers.serialize(activateUserRequestBody,
+              specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -90,11 +90,12 @@ class AuthApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(UserReadModel),
-      ) as UserReadModel;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(UserReadModel),
+            ) as UserReadModel;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -118,10 +119,10 @@ class AuthApi {
   }
 
   /// ログイン
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [loginRequestBody] 
+  /// * [loginRequestBody]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -131,7 +132,7 @@ class AuthApi {
   ///
   /// Returns a [Future] containing a [Response] with a [Token] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Token>> authLoginPost({ 
+  Future<Response<Token>> authLoginPost({
     LoginRequestBody? loginRequestBody,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -158,11 +159,12 @@ class AuthApi {
 
     try {
       const _type = FullType(LoginRequestBody);
-      _bodyData = loginRequestBody == null ? null : _serializers.serialize(loginRequestBody, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = loginRequestBody == null
+          ? null
+          : _serializers.serialize(loginRequestBody, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -185,11 +187,12 @@ class AuthApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Token),
-      ) as Token;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(Token),
+            ) as Token;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -213,10 +216,10 @@ class AuthApi {
   }
 
   /// 仮登録
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [temporaryRegistrationRequestBody] 
+  /// * [temporaryRegistrationRequestBody]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -226,7 +229,7 @@ class AuthApi {
   ///
   /// Returns a [Future] containing a [Response] with a [Token] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Token>> authTemporaryRegistrationPost({ 
+  Future<Response<Token>> authTemporaryRegistrationPost({
     TemporaryRegistrationRequestBody? temporaryRegistrationRequestBody,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -253,11 +256,13 @@ class AuthApi {
 
     try {
       const _type = FullType(TemporaryRegistrationRequestBody);
-      _bodyData = temporaryRegistrationRequestBody == null ? null : _serializers.serialize(temporaryRegistrationRequestBody, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = temporaryRegistrationRequestBody == null
+          ? null
+          : _serializers.serialize(temporaryRegistrationRequestBody,
+              specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -280,11 +285,12 @@ class AuthApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Token),
-      ) as Token;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(Token),
+            ) as Token;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -306,5 +312,4 @@ class AuthApi {
       extra: _response.extra,
     );
   }
-
 }
