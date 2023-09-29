@@ -85,6 +85,7 @@ Class | Method | HTTP request | Description
 [*CommunitiesApi*](doc/CommunitiesApi.md) | [**communitiesRenameCommunityPut**](doc/CommunitiesApi.md#communitiesrenamecommunityput) | **PUT** /communities/rename-community | コミュニティ名の変更
 [*CommunitiesApi*](doc/CommunitiesApi.md) | [**communitiesResetPlayerNumGamesPut**](doc/CommunitiesApi.md#communitiesresetplayernumgamesput) | **PUT** /communities/reset-player-num-games | プレイヤーの試合数をリセット
 [*UsersApi*](doc/UsersApi.md) | [**usersMeGet**](doc/UsersApi.md#usersmeget) | **GET** /users/me | 自分のユーザー情報の取得
+[*UsersApi*](doc/UsersApi.md) | [**usersReissueConfirmPassPost**](doc/UsersApi.md#usersreissueconfirmpasspost) | **POST** /users/reissue-confirm-pass | パスワード再発行
 [*UsersApi*](doc/UsersApi.md) | [**usersUserIdGet**](doc/UsersApi.md#usersuseridget) | **GET** /users/{user-id} | ユーザーの取得
 
 

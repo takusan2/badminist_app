@@ -26,7 +26,7 @@ class SimpleTablePage extends StatelessWidget {
         columnsTitleBuilder: (i) => Text(titleColumn[i]),
         rowsTitleBuilder: (i) => Text(titleRow[i]),
         contentCellBuilder: (i, j) => data[i][j],
-        legendCell: Text('Sticky Legend'),
+        legendCell: const Text('Sticky Legend'),
       ),
     );
   }

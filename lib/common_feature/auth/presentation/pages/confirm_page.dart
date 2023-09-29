@@ -55,7 +55,7 @@ class ConfirmPage extends HookConsumerWidget {
                 if (_formKey.currentState!.validate()) {
                   _formKey.currentState!.save();
 
-                  await ref.read(authProvider.notifier).activate(
+                  await ref.read(authProvider.notifier).activateUser(
                       email: user.email!, confirmPass: confirmPass.value);
                 }
               },
@@ -72,11 +72,11 @@ class ConfirmPage extends HookConsumerWidget {
             ),
             const SizedBox(height: 30),
             TextButton(
-              onPressed: () {
-                // TODO: 再送信するようにする
+              onPressed: () async {
+                await ref.read(authProvider.notifier).reissueConfirmPass();
               },
               child: Text(
-                '確認コードを再送信する',
+                '確認コードを再発行する',
                 style: TextStyle(
                   fontSize: 16,
                   color: Theme.of(context).colorScheme.primary,

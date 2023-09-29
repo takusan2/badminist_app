@@ -51,6 +51,11 @@ class AuthNotifier extends AsyncNotifier<UserReadModel?> {
     }
   }
 
+  Future<void> logout() async {
+    await secureStorageRepository.save(SecureStorageKey.token, null);
+    await unSetUser();
+  }
+
   Future<void> temporaryRegistration({
     required String name,
     required String email,
@@ -77,7 +82,7 @@ class AuthNotifier extends AsyncNotifier<UserReadModel?> {
     }
   }
 
-  Future<void> activate({
+  Future<void> activateUser({
     required String email,
     required String confirmPass,
   }) async {
@@ -97,9 +102,17 @@ class AuthNotifier extends AsyncNotifier<UserReadModel?> {
     }
   }
 
-  Future<void> logout() async {
-    await secureStorageRepository.save(SecureStorageKey.token, null);
-    await unSetUser();
+  Future<void> reissueConfirmPass() async {
+    try {
+      final token = await secureStorageRepository.load(SecureStorageKey.token);
+      await usersApi.usersReissueConfirmPassPost(
+        headers: {'Authorization': 'Bearer $token'},
+      );
+    } on DioException catch (e) {
+      debugPrint('reissueConfirmPass: ${e.response?.data.toString()}');
+    } on Exception catch (e) {
+      debugPrint('reissueConfirmPass: ${e.toString()}');
+    }
   }
 
   Future<bool> isLogin() async {
