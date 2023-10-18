@@ -16,10 +16,10 @@ part 'remove_player_request_body.g.dart';
 @BuiltValue()
 abstract class RemovePlayerRequestBody implements Built<RemovePlayerRequestBody, RemovePlayerRequestBodyBuilder> {
   @BuiltValueField(wireName: r'community_id')
-  String? get communityId;
+  String get communityId;
 
   @BuiltValueField(wireName: r'player_id')
-  String? get playerId;
+  String get playerId;
 
   RemovePlayerRequestBody._();
 
@@ -44,20 +44,16 @@ class _$RemovePlayerRequestBodySerializer implements PrimitiveSerializer<RemoveP
     RemovePlayerRequestBody object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.communityId != null) {
-      yield r'community_id';
-      yield serializers.serialize(
-        object.communityId,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.playerId != null) {
-      yield r'player_id';
-      yield serializers.serialize(
-        object.playerId,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'community_id';
+    yield serializers.serialize(
+      object.communityId,
+      specifiedType: const FullType(String),
+    );
+    yield r'player_id';
+    yield serializers.serialize(
+      object.playerId,
+      specifiedType: const FullType(String),
+    );
   }
 
   @override

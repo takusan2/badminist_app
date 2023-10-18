@@ -90,4 +90,72 @@ class PlayerListNotifier extends AsyncNotifier<List<PlayerReadModel>?> {
       () async => await _fetchPlayers(homePageState.selectedCommunity ?? ''),
     );
   }
+
+  Future<void> _changePlayerProperty(
+    ChangePlayerPropertyRequestBody requestBody,
+  ) async {
+    try {
+      final token = await secureStorageRepository.load(SecureStorageKey.token);
+      await communitiesApi.communitiesChangePlayerPropertyPut(
+        changePlayerPropertyRequestBody: requestBody,
+        headers: {'Authorization': 'Bearer $token'},
+      );
+    } on DioException catch (e) {
+      throw ApiException(e.response?.data.toString());
+    } on Exception catch (e) {
+      debugPrint('ChangePlayerStatus: ${e.toString()}');
+    }
+  }
+
+  Future<void> changePlayerProperty({
+    required String playerId,
+    required PlayerStatus status,
+    required int numGames,
+    required int age,
+    required PlayerLevel level,
+    required String name,
+    required PlayerGender gender,
+  }) async {
+    final requestBody = ChangePlayerPropertyRequestBody(
+      (b) => b
+        ..communityId = homePageState.selectedCommunity
+        ..playerId = playerId
+        ..numGames = numGames
+        ..age = age
+        ..level = level
+        ..status = status
+        ..name = name
+        ..gender = gender,
+    );
+    await _changePlayerProperty(requestBody);
+
+    state =
+        const AsyncLoading<List<PlayerReadModel>?>().copyWithPrevious(state);
+    state = await AsyncValue.guard(
+      () async => await _fetchPlayers(homePageState.selectedCommunity ?? ''),
+    );
+  }
+
+  Future<void> deletePlayer(String playerId) async {
+    try {
+      final token = await secureStorageRepository.load(SecureStorageKey.token);
+      await communitiesApi.communitiesRemovePlayerPost(
+        removePlayerRequestBody: RemovePlayerRequestBody(
+          (b) => b
+            ..communityId = homePageState.selectedCommunity
+            ..playerId = playerId,
+        ),
+        headers: {'Authorization': 'Bearer $token'},
+      );
+    } on DioException catch (e) {
+      throw ApiException(e.response?.data.toString());
+    } on Exception catch (e) {
+      debugPrint('deletePlayer: ${e.toString()}');
+    }
+    state =
+        const AsyncLoading<List<PlayerReadModel>?>().copyWithPrevious(state);
+    state = await AsyncValue.guard(
+      () async => await _fetchPlayers(homePageState.selectedCommunity ?? ''),
+    );
+  }
 }

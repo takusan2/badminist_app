@@ -19,13 +19,13 @@ part 'member_read_model.g.dart';
 @BuiltValue()
 abstract class MemberReadModel implements Built<MemberReadModel, MemberReadModelBuilder> {
   @BuiltValueField(wireName: r'member_id')
-  String? get memberId;
+  String get memberId;
 
   @BuiltValueField(wireName: r'user')
-  UserReadModel? get user;
+  UserReadModel get user;
 
   @BuiltValueField(wireName: r'role')
-  Role? get role;
+  Role get role;
   // enum roleEnum {  admin,  staff,  member,  };
 
   MemberReadModel._();
@@ -51,27 +51,21 @@ class _$MemberReadModelSerializer implements PrimitiveSerializer<MemberReadModel
     MemberReadModel object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.memberId != null) {
-      yield r'member_id';
-      yield serializers.serialize(
-        object.memberId,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.user != null) {
-      yield r'user';
-      yield serializers.serialize(
-        object.user,
-        specifiedType: const FullType(UserReadModel),
-      );
-    }
-    if (object.role != null) {
-      yield r'role';
-      yield serializers.serialize(
-        object.role,
-        specifiedType: const FullType(Role),
-      );
-    }
+    yield r'member_id';
+    yield serializers.serialize(
+      object.memberId,
+      specifiedType: const FullType(String),
+    );
+    yield r'user';
+    yield serializers.serialize(
+      object.user,
+      specifiedType: const FullType(UserReadModel),
+    );
+    yield r'role';
+    yield serializers.serialize(
+      object.role,
+      specifiedType: const FullType(Role),
+    );
   }
 
   @override

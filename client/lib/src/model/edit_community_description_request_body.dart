@@ -16,10 +16,10 @@ part 'edit_community_description_request_body.g.dart';
 @BuiltValue()
 abstract class EditCommunityDescriptionRequestBody implements Built<EditCommunityDescriptionRequestBody, EditCommunityDescriptionRequestBodyBuilder> {
   @BuiltValueField(wireName: r'community_id')
-  String? get communityId;
+  String get communityId;
 
   @BuiltValueField(wireName: r'description')
-  String? get description;
+  String get description;
 
   EditCommunityDescriptionRequestBody._();
 
@@ -44,20 +44,16 @@ class _$EditCommunityDescriptionRequestBodySerializer implements PrimitiveSerial
     EditCommunityDescriptionRequestBody object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.communityId != null) {
-      yield r'community_id';
-      yield serializers.serialize(
-        object.communityId,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.description != null) {
-      yield r'description';
-      yield serializers.serialize(
-        object.description,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'community_id';
+    yield serializers.serialize(
+      object.communityId,
+      specifiedType: const FullType(String),
+    );
+    yield r'description';
+    yield serializers.serialize(
+      object.description,
+      specifiedType: const FullType(String),
+    );
   }
 
   @override

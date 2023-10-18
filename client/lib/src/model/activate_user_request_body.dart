@@ -16,10 +16,10 @@ part 'activate_user_request_body.g.dart';
 @BuiltValue()
 abstract class ActivateUserRequestBody implements Built<ActivateUserRequestBody, ActivateUserRequestBodyBuilder> {
   @BuiltValueField(wireName: r'email')
-  String? get email;
+  String get email;
 
   @BuiltValueField(wireName: r'confirm_pass')
-  String? get confirmPass;
+  String get confirmPass;
 
   ActivateUserRequestBody._();
 
@@ -44,20 +44,16 @@ class _$ActivateUserRequestBodySerializer implements PrimitiveSerializer<Activat
     ActivateUserRequestBody object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.email != null) {
-      yield r'email';
-      yield serializers.serialize(
-        object.email,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.confirmPass != null) {
-      yield r'confirm_pass';
-      yield serializers.serialize(
-        object.confirmPass,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'email';
+    yield serializers.serialize(
+      object.email,
+      specifiedType: const FullType(String),
+    );
+    yield r'confirm_pass';
+    yield serializers.serialize(
+      object.confirmPass,
+      specifiedType: const FullType(String),
+    );
   }
 
   @override

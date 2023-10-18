@@ -62,21 +62,21 @@ class HomePage extends HookConsumerWidget {
               itemBuilder: (context, index) {
                 final community = communities[index];
                 return CommunityCard(
-                    name: community.name ?? '',
-                    description: community.description ?? '',
+                    name: community.name,
+                    description: community.description,
                     onDeleteIconPressed: () {
                       notifier.deleteCommunity(
-                        community.id ?? '',
+                        community.id,
                       );
                     },
                     onTapCard: () {
                       stateNotifier.selectCommunity(
-                        community.id ?? '',
+                        community.id,
                       );
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => CommunityPage(
-                            communityId: community.id ?? '',
+                            communityId: community.id,
                           ),
                         ),
                       );

@@ -9,18 +9,26 @@ part of 'temporary_registration_request_body.dart';
 class _$TemporaryRegistrationRequestBody
     extends TemporaryRegistrationRequestBody {
   @override
-  final String? name;
+  final String name;
   @override
-  final String? email;
+  final String email;
   @override
-  final String? password;
+  final String password;
 
   factory _$TemporaryRegistrationRequestBody(
           [void Function(TemporaryRegistrationRequestBodyBuilder)? updates]) =>
       (new TemporaryRegistrationRequestBodyBuilder()..update(updates))._build();
 
-  _$TemporaryRegistrationRequestBody._({this.name, this.email, this.password})
-      : super._();
+  _$TemporaryRegistrationRequestBody._(
+      {required this.name, required this.email, required this.password})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'TemporaryRegistrationRequestBody', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        email, r'TemporaryRegistrationRequestBody', 'email');
+    BuiltValueNullFieldError.checkNotNull(
+        password, r'TemporaryRegistrationRequestBody', 'password');
+  }
 
   @override
   TemporaryRegistrationRequestBody rebuild(
@@ -110,7 +118,12 @@ class TemporaryRegistrationRequestBodyBuilder
   _$TemporaryRegistrationRequestBody _build() {
     final _$result = _$v ??
         new _$TemporaryRegistrationRequestBody._(
-            name: name, email: email, password: password);
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'TemporaryRegistrationRequestBody', 'name'),
+            email: BuiltValueNullFieldError.checkNotNull(
+                email, r'TemporaryRegistrationRequestBody', 'email'),
+            password: BuiltValueNullFieldError.checkNotNull(
+                password, r'TemporaryRegistrationRequestBody', 'password'));
     replace(_$result);
     return _$result;
   }

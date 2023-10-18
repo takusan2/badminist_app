@@ -8,14 +8,17 @@ part of 'match.dart';
 
 class _$Match extends Match {
   @override
-  final Team? left;
+  final Team left;
   @override
-  final Team? right;
+  final Team right;
 
   factory _$Match([void Function(MatchBuilder)? updates]) =>
       (new MatchBuilder()..update(updates))._build();
 
-  _$Match._({this.left, this.right}) : super._();
+  _$Match._({required this.left, required this.right}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(left, r'Match', 'left');
+    BuiltValueNullFieldError.checkNotNull(right, r'Match', 'right');
+  }
 
   @override
   Match rebuild(void Function(MatchBuilder) updates) =>
@@ -66,8 +69,8 @@ class MatchBuilder implements Builder<Match, MatchBuilder> {
   MatchBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _left = $v.left?.toBuilder();
-      _right = $v.right?.toBuilder();
+      _left = $v.left.toBuilder();
+      _right = $v.right.toBuilder();
       _$v = null;
     }
     return this;
@@ -90,15 +93,14 @@ class MatchBuilder implements Builder<Match, MatchBuilder> {
   _$Match _build() {
     _$Match _$result;
     try {
-      _$result =
-          _$v ?? new _$Match._(left: _left?.build(), right: _right?.build());
+      _$result = _$v ?? new _$Match._(left: left.build(), right: right.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'left';
-        _left?.build();
+        left.build();
         _$failedField = 'right';
-        _right?.build();
+        right.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'Match', _$failedField, e.toString());

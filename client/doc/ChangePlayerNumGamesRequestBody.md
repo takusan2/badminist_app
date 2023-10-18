@@ -8,9 +8,9 @@ import 'package:openapi/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**communityId** | **String** |  | [optional] 
-**playerId** | **String** |  | [optional] 
-**numGames** | **int** |  | [optional] 
+**communityId** | **String** |  | 
+**playerId** | **String** |  | 
+**numGames** | **int** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

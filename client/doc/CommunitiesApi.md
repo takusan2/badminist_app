@@ -260,8 +260,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **communityId** | **String**|  | 
- **numCourt** | **int**|  | 
- **rule** | [**Rule**](.md)|  | 
+ **numCourt** | **int**|  | [optional] 
+ **rule** | [**Rule**](.md)|  | [optional] 
 
 ### Return type
 

@@ -17,10 +17,10 @@ part 'match.g.dart';
 @BuiltValue()
 abstract class Match implements Built<Match, MatchBuilder> {
   @BuiltValueField(wireName: r'left')
-  Team? get left;
+  Team get left;
 
   @BuiltValueField(wireName: r'right')
-  Team? get right;
+  Team get right;
 
   Match._();
 
@@ -45,20 +45,16 @@ class _$MatchSerializer implements PrimitiveSerializer<Match> {
     Match object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.left != null) {
-      yield r'left';
-      yield serializers.serialize(
-        object.left,
-        specifiedType: const FullType(Team),
-      );
-    }
-    if (object.right != null) {
-      yield r'right';
-      yield serializers.serialize(
-        object.right,
-        specifiedType: const FullType(Team),
-      );
-    }
+    yield r'left';
+    yield serializers.serialize(
+      object.left,
+      specifiedType: const FullType(Team),
+    );
+    yield r'right';
+    yield serializers.serialize(
+      object.right,
+      specifiedType: const FullType(Team),
+    );
   }
 
   @override

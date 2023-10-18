@@ -9,36 +9,53 @@ part of 'change_player_property_request_body.dart';
 class _$ChangePlayerPropertyRequestBody
     extends ChangePlayerPropertyRequestBody {
   @override
-  final String? communityId;
+  final String communityId;
   @override
-  final String? playerId;
+  final String playerId;
   @override
-  final String? name;
+  final String name;
   @override
-  final PlayerGender? gender;
+  final PlayerGender gender;
   @override
-  final int? age;
+  final int age;
   @override
-  final PlayerLevel? level;
+  final PlayerLevel level;
   @override
-  final int? numGames;
+  final int numGames;
   @override
-  final PlayerStatus? status;
+  final PlayerStatus status;
 
   factory _$ChangePlayerPropertyRequestBody(
           [void Function(ChangePlayerPropertyRequestBodyBuilder)? updates]) =>
       (new ChangePlayerPropertyRequestBodyBuilder()..update(updates))._build();
 
   _$ChangePlayerPropertyRequestBody._(
-      {this.communityId,
-      this.playerId,
-      this.name,
-      this.gender,
-      this.age,
-      this.level,
-      this.numGames,
-      this.status})
-      : super._();
+      {required this.communityId,
+      required this.playerId,
+      required this.name,
+      required this.gender,
+      required this.age,
+      required this.level,
+      required this.numGames,
+      required this.status})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        communityId, r'ChangePlayerPropertyRequestBody', 'communityId');
+    BuiltValueNullFieldError.checkNotNull(
+        playerId, r'ChangePlayerPropertyRequestBody', 'playerId');
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'ChangePlayerPropertyRequestBody', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        gender, r'ChangePlayerPropertyRequestBody', 'gender');
+    BuiltValueNullFieldError.checkNotNull(
+        age, r'ChangePlayerPropertyRequestBody', 'age');
+    BuiltValueNullFieldError.checkNotNull(
+        level, r'ChangePlayerPropertyRequestBody', 'level');
+    BuiltValueNullFieldError.checkNotNull(
+        numGames, r'ChangePlayerPropertyRequestBody', 'numGames');
+    BuiltValueNullFieldError.checkNotNull(
+        status, r'ChangePlayerPropertyRequestBody', 'status');
+  }
 
   @override
   ChangePlayerPropertyRequestBody rebuild(
@@ -168,14 +185,22 @@ class ChangePlayerPropertyRequestBodyBuilder
   _$ChangePlayerPropertyRequestBody _build() {
     final _$result = _$v ??
         new _$ChangePlayerPropertyRequestBody._(
-            communityId: communityId,
-            playerId: playerId,
-            name: name,
-            gender: gender,
-            age: age,
-            level: level,
-            numGames: numGames,
-            status: status);
+            communityId: BuiltValueNullFieldError.checkNotNull(
+                communityId, r'ChangePlayerPropertyRequestBody', 'communityId'),
+            playerId: BuiltValueNullFieldError.checkNotNull(
+                playerId, r'ChangePlayerPropertyRequestBody', 'playerId'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'ChangePlayerPropertyRequestBody', 'name'),
+            gender: BuiltValueNullFieldError.checkNotNull(
+                gender, r'ChangePlayerPropertyRequestBody', 'gender'),
+            age: BuiltValueNullFieldError.checkNotNull(
+                age, r'ChangePlayerPropertyRequestBody', 'age'),
+            level: BuiltValueNullFieldError.checkNotNull(
+                level, r'ChangePlayerPropertyRequestBody', 'level'),
+            numGames: BuiltValueNullFieldError.checkNotNull(
+                numGames, r'ChangePlayerPropertyRequestBody', 'numGames'),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'ChangePlayerPropertyRequestBody', 'status'));
     replace(_$result);
     return _$result;
   }

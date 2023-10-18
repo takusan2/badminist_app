@@ -9,9 +9,9 @@ part of 'edit_community_description_request_body.dart';
 class _$EditCommunityDescriptionRequestBody
     extends EditCommunityDescriptionRequestBody {
   @override
-  final String? communityId;
+  final String communityId;
   @override
-  final String? description;
+  final String description;
 
   factory _$EditCommunityDescriptionRequestBody(
           [void Function(EditCommunityDescriptionRequestBodyBuilder)?
@@ -19,8 +19,14 @@ class _$EditCommunityDescriptionRequestBody
       (new EditCommunityDescriptionRequestBodyBuilder()..update(updates))
           ._build();
 
-  _$EditCommunityDescriptionRequestBody._({this.communityId, this.description})
-      : super._();
+  _$EditCommunityDescriptionRequestBody._(
+      {required this.communityId, required this.description})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        communityId, r'EditCommunityDescriptionRequestBody', 'communityId');
+    BuiltValueNullFieldError.checkNotNull(
+        description, r'EditCommunityDescriptionRequestBody', 'description');
+  }
 
   @override
   EditCommunityDescriptionRequestBody rebuild(
@@ -103,7 +109,10 @@ class EditCommunityDescriptionRequestBodyBuilder
   _$EditCommunityDescriptionRequestBody _build() {
     final _$result = _$v ??
         new _$EditCommunityDescriptionRequestBody._(
-            communityId: communityId, description: description);
+            communityId: BuiltValueNullFieldError.checkNotNull(communityId,
+                r'EditCommunityDescriptionRequestBody', 'communityId'),
+            description: BuiltValueNullFieldError.checkNotNull(description,
+                r'EditCommunityDescriptionRequestBody', 'description'));
     replace(_$result);
     return _$result;
   }

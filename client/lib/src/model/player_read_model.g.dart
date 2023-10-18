@@ -8,38 +8,51 @@ part of 'player_read_model.dart';
 
 class _$PlayerReadModel extends PlayerReadModel {
   @override
-  final String? id;
+  final String id;
   @override
-  final String? name;
+  final String name;
   @override
-  final PlayerGender? gender;
+  final PlayerGender gender;
   @override
-  final int? age;
+  final int age;
   @override
-  final PlayerLevel? level;
+  final PlayerLevel level;
   @override
-  final int? numGames;
+  final int numGames;
   @override
-  final PlayerStatus? status;
+  final PlayerStatus status;
   @override
-  final String? createdAt;
+  final String createdAt;
   @override
-  final String? updatedAt;
+  final String updatedAt;
 
   factory _$PlayerReadModel([void Function(PlayerReadModelBuilder)? updates]) =>
       (new PlayerReadModelBuilder()..update(updates))._build();
 
   _$PlayerReadModel._(
-      {this.id,
-      this.name,
-      this.gender,
-      this.age,
-      this.level,
-      this.numGames,
-      this.status,
-      this.createdAt,
-      this.updatedAt})
-      : super._();
+      {required this.id,
+      required this.name,
+      required this.gender,
+      required this.age,
+      required this.level,
+      required this.numGames,
+      required this.status,
+      required this.createdAt,
+      required this.updatedAt})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(id, r'PlayerReadModel', 'id');
+    BuiltValueNullFieldError.checkNotNull(name, r'PlayerReadModel', 'name');
+    BuiltValueNullFieldError.checkNotNull(gender, r'PlayerReadModel', 'gender');
+    BuiltValueNullFieldError.checkNotNull(age, r'PlayerReadModel', 'age');
+    BuiltValueNullFieldError.checkNotNull(level, r'PlayerReadModel', 'level');
+    BuiltValueNullFieldError.checkNotNull(
+        numGames, r'PlayerReadModel', 'numGames');
+    BuiltValueNullFieldError.checkNotNull(status, r'PlayerReadModel', 'status');
+    BuiltValueNullFieldError.checkNotNull(
+        createdAt, r'PlayerReadModel', 'createdAt');
+    BuiltValueNullFieldError.checkNotNull(
+        updatedAt, r'PlayerReadModel', 'updatedAt');
+  }
 
   @override
   PlayerReadModel rebuild(void Function(PlayerReadModelBuilder) updates) =>
@@ -174,15 +187,24 @@ class PlayerReadModelBuilder
   _$PlayerReadModel _build() {
     final _$result = _$v ??
         new _$PlayerReadModel._(
-            id: id,
-            name: name,
-            gender: gender,
-            age: age,
-            level: level,
-            numGames: numGames,
-            status: status,
-            createdAt: createdAt,
-            updatedAt: updatedAt);
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'PlayerReadModel', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'PlayerReadModel', 'name'),
+            gender: BuiltValueNullFieldError.checkNotNull(
+                gender, r'PlayerReadModel', 'gender'),
+            age: BuiltValueNullFieldError.checkNotNull(
+                age, r'PlayerReadModel', 'age'),
+            level: BuiltValueNullFieldError.checkNotNull(
+                level, r'PlayerReadModel', 'level'),
+            numGames: BuiltValueNullFieldError.checkNotNull(
+                numGames, r'PlayerReadModel', 'numGames'),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'PlayerReadModel', 'status'),
+            createdAt: BuiltValueNullFieldError.checkNotNull(
+                createdAt, r'PlayerReadModel', 'createdAt'),
+            updatedAt: BuiltValueNullFieldError.checkNotNull(
+                updatedAt, r'PlayerReadModel', 'updatedAt'));
     replace(_$result);
     return _$result;
   }

@@ -8,29 +8,28 @@ part of 'user_read_model.dart';
 
 class _$UserReadModel extends UserReadModel {
   @override
-  final String? id;
+  final String id;
   @override
-  final String? name;
+  final String name;
   @override
-  final String? email;
+  final String email;
   @override
-  final UserStatus? status;
-  @override
-  final String? createdAt;
-  @override
-  final String? updatedAt;
+  final UserStatus status;
 
   factory _$UserReadModel([void Function(UserReadModelBuilder)? updates]) =>
       (new UserReadModelBuilder()..update(updates))._build();
 
   _$UserReadModel._(
-      {this.id,
-      this.name,
-      this.email,
-      this.status,
-      this.createdAt,
-      this.updatedAt})
-      : super._();
+      {required this.id,
+      required this.name,
+      required this.email,
+      required this.status})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(id, r'UserReadModel', 'id');
+    BuiltValueNullFieldError.checkNotNull(name, r'UserReadModel', 'name');
+    BuiltValueNullFieldError.checkNotNull(email, r'UserReadModel', 'email');
+    BuiltValueNullFieldError.checkNotNull(status, r'UserReadModel', 'status');
+  }
 
   @override
   UserReadModel rebuild(void Function(UserReadModelBuilder) updates) =>
@@ -46,9 +45,7 @@ class _$UserReadModel extends UserReadModel {
         id == other.id &&
         name == other.name &&
         email == other.email &&
-        status == other.status &&
-        createdAt == other.createdAt &&
-        updatedAt == other.updatedAt;
+        status == other.status;
   }
 
   @override
@@ -58,8 +55,6 @@ class _$UserReadModel extends UserReadModel {
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, email.hashCode);
     _$hash = $jc(_$hash, status.hashCode);
-    _$hash = $jc(_$hash, createdAt.hashCode);
-    _$hash = $jc(_$hash, updatedAt.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -70,9 +65,7 @@ class _$UserReadModel extends UserReadModel {
           ..add('id', id)
           ..add('name', name)
           ..add('email', email)
-          ..add('status', status)
-          ..add('createdAt', createdAt)
-          ..add('updatedAt', updatedAt))
+          ..add('status', status))
         .toString();
   }
 }
@@ -97,14 +90,6 @@ class UserReadModelBuilder
   UserStatus? get status => _$this._status;
   set status(UserStatus? status) => _$this._status = status;
 
-  String? _createdAt;
-  String? get createdAt => _$this._createdAt;
-  set createdAt(String? createdAt) => _$this._createdAt = createdAt;
-
-  String? _updatedAt;
-  String? get updatedAt => _$this._updatedAt;
-  set updatedAt(String? updatedAt) => _$this._updatedAt = updatedAt;
-
   UserReadModelBuilder() {
     UserReadModel._defaults(this);
   }
@@ -116,8 +101,6 @@ class UserReadModelBuilder
       _name = $v.name;
       _email = $v.email;
       _status = $v.status;
-      _createdAt = $v.createdAt;
-      _updatedAt = $v.updatedAt;
       _$v = null;
     }
     return this;
@@ -140,12 +123,14 @@ class UserReadModelBuilder
   _$UserReadModel _build() {
     final _$result = _$v ??
         new _$UserReadModel._(
-            id: id,
-            name: name,
-            email: email,
-            status: status,
-            createdAt: createdAt,
-            updatedAt: updatedAt);
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'UserReadModel', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'UserReadModel', 'name'),
+            email: BuiltValueNullFieldError.checkNotNull(
+                email, r'UserReadModel', 'email'),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'UserReadModel', 'status'));
     replace(_$result);
     return _$result;
   }

@@ -26,34 +26,34 @@ part 'player_read_model.g.dart';
 @BuiltValue()
 abstract class PlayerReadModel implements Built<PlayerReadModel, PlayerReadModelBuilder> {
   @BuiltValueField(wireName: r'id')
-  String? get id;
+  String get id;
 
   @BuiltValueField(wireName: r'name')
-  String? get name;
+  String get name;
 
   @BuiltValueField(wireName: r'gender')
-  PlayerGender? get gender;
+  PlayerGender get gender;
   // enum genderEnum {  male,  female,  unknown,  };
 
   @BuiltValueField(wireName: r'age')
-  int? get age;
+  int get age;
 
   @BuiltValueField(wireName: r'level')
-  PlayerLevel? get level;
+  PlayerLevel get level;
   // enum levelEnum {  beginner,  intermediate,  advanced,  };
 
   @BuiltValueField(wireName: r'num_games')
-  int? get numGames;
+  int get numGames;
 
   @BuiltValueField(wireName: r'status')
-  PlayerStatus? get status;
+  PlayerStatus get status;
   // enum statusEnum {  attend,  break,  absence,  };
 
   @BuiltValueField(wireName: r'created_at')
-  String? get createdAt;
+  String get createdAt;
 
   @BuiltValueField(wireName: r'updated_at')
-  String? get updatedAt;
+  String get updatedAt;
 
   PlayerReadModel._();
 
@@ -78,69 +78,51 @@ class _$PlayerReadModelSerializer implements PrimitiveSerializer<PlayerReadModel
     PlayerReadModel object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.name != null) {
-      yield r'name';
-      yield serializers.serialize(
-        object.name,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.gender != null) {
-      yield r'gender';
-      yield serializers.serialize(
-        object.gender,
-        specifiedType: const FullType(PlayerGender),
-      );
-    }
-    if (object.age != null) {
-      yield r'age';
-      yield serializers.serialize(
-        object.age,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.level != null) {
-      yield r'level';
-      yield serializers.serialize(
-        object.level,
-        specifiedType: const FullType(PlayerLevel),
-      );
-    }
-    if (object.numGames != null) {
-      yield r'num_games';
-      yield serializers.serialize(
-        object.numGames,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.status != null) {
-      yield r'status';
-      yield serializers.serialize(
-        object.status,
-        specifiedType: const FullType(PlayerStatus),
-      );
-    }
-    if (object.createdAt != null) {
-      yield r'created_at';
-      yield serializers.serialize(
-        object.createdAt,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.updatedAt != null) {
-      yield r'updated_at';
-      yield serializers.serialize(
-        object.updatedAt,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(String),
+    );
+    yield r'name';
+    yield serializers.serialize(
+      object.name,
+      specifiedType: const FullType(String),
+    );
+    yield r'gender';
+    yield serializers.serialize(
+      object.gender,
+      specifiedType: const FullType(PlayerGender),
+    );
+    yield r'age';
+    yield serializers.serialize(
+      object.age,
+      specifiedType: const FullType(int),
+    );
+    yield r'level';
+    yield serializers.serialize(
+      object.level,
+      specifiedType: const FullType(PlayerLevel),
+    );
+    yield r'num_games';
+    yield serializers.serialize(
+      object.numGames,
+      specifiedType: const FullType(int),
+    );
+    yield r'status';
+    yield serializers.serialize(
+      object.status,
+      specifiedType: const FullType(PlayerStatus),
+    );
+    yield r'created_at';
+    yield serializers.serialize(
+      object.createdAt,
+      specifiedType: const FullType(String),
+    );
+    yield r'updated_at';
+    yield serializers.serialize(
+      object.updatedAt,
+      specifiedType: const FullType(String),
+    );
   }
 
   @override

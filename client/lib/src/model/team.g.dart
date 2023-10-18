@@ -8,12 +8,14 @@ part of 'team.dart';
 
 class _$Team extends Team {
   @override
-  final BuiltList<PlayerReadModel>? players;
+  final BuiltList<PlayerReadModel> players;
 
   factory _$Team([void Function(TeamBuilder)? updates]) =>
       (new TeamBuilder()..update(updates))._build();
 
-  _$Team._({this.players}) : super._();
+  _$Team._({required this.players}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(players, r'Team', 'players');
+  }
 
   @override
   Team rebuild(void Function(TeamBuilder) updates) =>
@@ -59,7 +61,7 @@ class TeamBuilder implements Builder<Team, TeamBuilder> {
   TeamBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _players = $v.players?.toBuilder();
+      _players = $v.players.toBuilder();
       _$v = null;
     }
     return this;
@@ -82,12 +84,12 @@ class TeamBuilder implements Builder<Team, TeamBuilder> {
   _$Team _build() {
     _$Team _$result;
     try {
-      _$result = _$v ?? new _$Team._(players: _players?.build());
+      _$result = _$v ?? new _$Team._(players: players.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'players';
-        _players?.build();
+        players.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'Team', _$failedField, e.toString());

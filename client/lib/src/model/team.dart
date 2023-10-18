@@ -17,7 +17,7 @@ part 'team.g.dart';
 @BuiltValue()
 abstract class Team implements Built<Team, TeamBuilder> {
   @BuiltValueField(wireName: r'players')
-  BuiltList<PlayerReadModel>? get players;
+  BuiltList<PlayerReadModel> get players;
 
   Team._();
 
@@ -42,13 +42,11 @@ class _$TeamSerializer implements PrimitiveSerializer<Team> {
     Team object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.players != null) {
-      yield r'players';
-      yield serializers.serialize(
-        object.players,
-        specifiedType: const FullType(BuiltList, [FullType(PlayerReadModel)]),
-      );
-    }
+    yield r'players';
+    yield serializers.serialize(
+      object.players,
+      specifiedType: const FullType(BuiltList, [FullType(PlayerReadModel)]),
+    );
   }
 
   @override

@@ -17,7 +17,7 @@ part 'match_combination.g.dart';
 @BuiltValue()
 abstract class MatchCombination implements Built<MatchCombination, MatchCombinationBuilder> {
   @BuiltValueField(wireName: r'matches')
-  BuiltList<Match>? get matches;
+  BuiltList<Match> get matches;
 
   MatchCombination._();
 
@@ -42,13 +42,11 @@ class _$MatchCombinationSerializer implements PrimitiveSerializer<MatchCombinati
     MatchCombination object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.matches != null) {
-      yield r'matches';
-      yield serializers.serialize(
-        object.matches,
-        specifiedType: const FullType(BuiltList, [FullType(Match)]),
-      );
-    }
+    yield r'matches';
+    yield serializers.serialize(
+      object.matches,
+      specifiedType: const FullType(BuiltList, [FullType(Match)]),
+    );
   }
 
   @override

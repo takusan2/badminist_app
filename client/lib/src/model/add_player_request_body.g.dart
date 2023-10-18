@@ -8,33 +8,47 @@ part of 'add_player_request_body.dart';
 
 class _$AddPlayerRequestBody extends AddPlayerRequestBody {
   @override
-  final String? communityId;
+  final String communityId;
   @override
-  final String? name;
+  final String name;
   @override
-  final PlayerGender? gender;
+  final PlayerGender gender;
   @override
-  final int? age;
+  final int age;
   @override
-  final PlayerLevel? level;
+  final PlayerLevel level;
   @override
-  final int? numGames;
+  final int numGames;
   @override
-  final PlayerStatus? status;
+  final PlayerStatus status;
 
   factory _$AddPlayerRequestBody(
           [void Function(AddPlayerRequestBodyBuilder)? updates]) =>
       (new AddPlayerRequestBodyBuilder()..update(updates))._build();
 
   _$AddPlayerRequestBody._(
-      {this.communityId,
-      this.name,
-      this.gender,
-      this.age,
-      this.level,
-      this.numGames,
-      this.status})
-      : super._();
+      {required this.communityId,
+      required this.name,
+      required this.gender,
+      required this.age,
+      required this.level,
+      required this.numGames,
+      required this.status})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        communityId, r'AddPlayerRequestBody', 'communityId');
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'AddPlayerRequestBody', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        gender, r'AddPlayerRequestBody', 'gender');
+    BuiltValueNullFieldError.checkNotNull(age, r'AddPlayerRequestBody', 'age');
+    BuiltValueNullFieldError.checkNotNull(
+        level, r'AddPlayerRequestBody', 'level');
+    BuiltValueNullFieldError.checkNotNull(
+        numGames, r'AddPlayerRequestBody', 'numGames');
+    BuiltValueNullFieldError.checkNotNull(
+        status, r'AddPlayerRequestBody', 'status');
+  }
 
   @override
   AddPlayerRequestBody rebuild(
@@ -154,13 +168,20 @@ class AddPlayerRequestBodyBuilder
   _$AddPlayerRequestBody _build() {
     final _$result = _$v ??
         new _$AddPlayerRequestBody._(
-            communityId: communityId,
-            name: name,
-            gender: gender,
-            age: age,
-            level: level,
-            numGames: numGames,
-            status: status);
+            communityId: BuiltValueNullFieldError.checkNotNull(
+                communityId, r'AddPlayerRequestBody', 'communityId'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'AddPlayerRequestBody', 'name'),
+            gender: BuiltValueNullFieldError.checkNotNull(
+                gender, r'AddPlayerRequestBody', 'gender'),
+            age: BuiltValueNullFieldError.checkNotNull(
+                age, r'AddPlayerRequestBody', 'age'),
+            level: BuiltValueNullFieldError.checkNotNull(
+                level, r'AddPlayerRequestBody', 'level'),
+            numGames: BuiltValueNullFieldError.checkNotNull(
+                numGames, r'AddPlayerRequestBody', 'numGames'),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'AddPlayerRequestBody', 'status'));
     replace(_$result);
     return _$result;
   }

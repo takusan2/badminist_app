@@ -8,15 +8,21 @@ part of 'activate_user_request_body.dart';
 
 class _$ActivateUserRequestBody extends ActivateUserRequestBody {
   @override
-  final String? email;
+  final String email;
   @override
-  final String? confirmPass;
+  final String confirmPass;
 
   factory _$ActivateUserRequestBody(
           [void Function(ActivateUserRequestBodyBuilder)? updates]) =>
       (new ActivateUserRequestBodyBuilder()..update(updates))._build();
 
-  _$ActivateUserRequestBody._({this.email, this.confirmPass}) : super._();
+  _$ActivateUserRequestBody._({required this.email, required this.confirmPass})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        email, r'ActivateUserRequestBody', 'email');
+    BuiltValueNullFieldError.checkNotNull(
+        confirmPass, r'ActivateUserRequestBody', 'confirmPass');
+  }
 
   @override
   ActivateUserRequestBody rebuild(
@@ -96,7 +102,11 @@ class ActivateUserRequestBodyBuilder
 
   _$ActivateUserRequestBody _build() {
     final _$result = _$v ??
-        new _$ActivateUserRequestBody._(email: email, confirmPass: confirmPass);
+        new _$ActivateUserRequestBody._(
+            email: BuiltValueNullFieldError.checkNotNull(
+                email, r'ActivateUserRequestBody', 'email'),
+            confirmPass: BuiltValueNullFieldError.checkNotNull(
+                confirmPass, r'ActivateUserRequestBody', 'confirmPass'));
     replace(_$result);
     return _$result;
   }

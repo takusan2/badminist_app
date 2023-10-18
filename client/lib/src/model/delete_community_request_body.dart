@@ -15,7 +15,7 @@ part 'delete_community_request_body.g.dart';
 @BuiltValue()
 abstract class DeleteCommunityRequestBody implements Built<DeleteCommunityRequestBody, DeleteCommunityRequestBodyBuilder> {
   @BuiltValueField(wireName: r'community_id')
-  String? get communityId;
+  String get communityId;
 
   DeleteCommunityRequestBody._();
 
@@ -40,13 +40,11 @@ class _$DeleteCommunityRequestBodySerializer implements PrimitiveSerializer<Dele
     DeleteCommunityRequestBody object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.communityId != null) {
-      yield r'community_id';
-      yield serializers.serialize(
-        object.communityId,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'community_id';
+    yield serializers.serialize(
+      object.communityId,
+      specifiedType: const FullType(String),
+    );
   }
 
   @override

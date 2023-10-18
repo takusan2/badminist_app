@@ -560,8 +560,8 @@ class CommunitiesApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<MatchCombination>> communitiesCommunityIdGenerateMatchesGet({ 
     required String communityId,
-    required int numCourt,
-    required Rule rule,
+    int? numCourt,
+    Rule? rule,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -589,8 +589,8 @@ class CommunitiesApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'num-court': encodeQueryParameter(_serializers, numCourt, const FullType(int)),
-      r'rule': encodeQueryParameter(_serializers, rule, const FullType(Rule)),
+      if (numCourt != null) r'num-court': encodeQueryParameter(_serializers, numCourt, const FullType(int)),
+      if (rule != null) r'rule': encodeQueryParameter(_serializers, rule, const FullType(Rule)),
     };
 
     final _response = await _dio.request<Object>(

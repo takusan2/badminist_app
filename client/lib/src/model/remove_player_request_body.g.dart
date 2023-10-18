@@ -8,15 +8,22 @@ part of 'remove_player_request_body.dart';
 
 class _$RemovePlayerRequestBody extends RemovePlayerRequestBody {
   @override
-  final String? communityId;
+  final String communityId;
   @override
-  final String? playerId;
+  final String playerId;
 
   factory _$RemovePlayerRequestBody(
           [void Function(RemovePlayerRequestBodyBuilder)? updates]) =>
       (new RemovePlayerRequestBodyBuilder()..update(updates))._build();
 
-  _$RemovePlayerRequestBody._({this.communityId, this.playerId}) : super._();
+  _$RemovePlayerRequestBody._(
+      {required this.communityId, required this.playerId})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        communityId, r'RemovePlayerRequestBody', 'communityId');
+    BuiltValueNullFieldError.checkNotNull(
+        playerId, r'RemovePlayerRequestBody', 'playerId');
+  }
 
   @override
   RemovePlayerRequestBody rebuild(
@@ -97,7 +104,10 @@ class RemovePlayerRequestBodyBuilder
   _$RemovePlayerRequestBody _build() {
     final _$result = _$v ??
         new _$RemovePlayerRequestBody._(
-            communityId: communityId, playerId: playerId);
+            communityId: BuiltValueNullFieldError.checkNotNull(
+                communityId, r'RemovePlayerRequestBody', 'communityId'),
+            playerId: BuiltValueNullFieldError.checkNotNull(
+                playerId, r'RemovePlayerRequestBody', 'playerId'));
     replace(_$result);
     return _$result;
   }

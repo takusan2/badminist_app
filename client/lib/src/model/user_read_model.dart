@@ -16,28 +16,20 @@ part 'user_read_model.g.dart';
 /// * [name] 
 /// * [email] 
 /// * [status] 
-/// * [createdAt] 
-/// * [updatedAt] 
 @BuiltValue()
 abstract class UserReadModel implements Built<UserReadModel, UserReadModelBuilder> {
   @BuiltValueField(wireName: r'id')
-  String? get id;
+  String get id;
 
   @BuiltValueField(wireName: r'name')
-  String? get name;
+  String get name;
 
   @BuiltValueField(wireName: r'email')
-  String? get email;
+  String get email;
 
   @BuiltValueField(wireName: r'status')
-  UserStatus? get status;
+  UserStatus get status;
   // enum statusEnum {  inactive,  active,  };
-
-  @BuiltValueField(wireName: r'created_at')
-  String? get createdAt;
-
-  @BuiltValueField(wireName: r'updated_at')
-  String? get updatedAt;
 
   UserReadModel._();
 
@@ -62,48 +54,26 @@ class _$UserReadModelSerializer implements PrimitiveSerializer<UserReadModel> {
     UserReadModel object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.name != null) {
-      yield r'name';
-      yield serializers.serialize(
-        object.name,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.email != null) {
-      yield r'email';
-      yield serializers.serialize(
-        object.email,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.status != null) {
-      yield r'status';
-      yield serializers.serialize(
-        object.status,
-        specifiedType: const FullType(UserStatus),
-      );
-    }
-    if (object.createdAt != null) {
-      yield r'created_at';
-      yield serializers.serialize(
-        object.createdAt,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.updatedAt != null) {
-      yield r'updated_at';
-      yield serializers.serialize(
-        object.updatedAt,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(String),
+    );
+    yield r'name';
+    yield serializers.serialize(
+      object.name,
+      specifiedType: const FullType(String),
+    );
+    yield r'email';
+    yield serializers.serialize(
+      object.email,
+      specifiedType: const FullType(String),
+    );
+    yield r'status';
+    yield serializers.serialize(
+      object.status,
+      specifiedType: const FullType(UserStatus),
+    );
   }
 
   @override
@@ -154,20 +124,6 @@ class _$UserReadModelSerializer implements PrimitiveSerializer<UserReadModel> {
             specifiedType: const FullType(UserStatus),
           ) as UserStatus;
           result.status = valueDes;
-          break;
-        case r'created_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.createdAt = valueDes;
-          break;
-        case r'updated_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.updatedAt = valueDes;
           break;
         default:
           unhandled.add(key);

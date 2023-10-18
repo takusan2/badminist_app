@@ -19,19 +19,19 @@ part 'community_read_model.g.dart';
 @BuiltValue()
 abstract class CommunityReadModel implements Built<CommunityReadModel, CommunityReadModelBuilder> {
   @BuiltValueField(wireName: r'id')
-  String? get id;
+  String get id;
 
   @BuiltValueField(wireName: r'name')
-  String? get name;
+  String get name;
 
   @BuiltValueField(wireName: r'description')
-  String? get description;
+  String get description;
 
   @BuiltValueField(wireName: r'created_at')
-  String? get createdAt;
+  String get createdAt;
 
   @BuiltValueField(wireName: r'updated_at')
-  String? get updatedAt;
+  String get updatedAt;
 
   CommunityReadModel._();
 
@@ -56,41 +56,31 @@ class _$CommunityReadModelSerializer implements PrimitiveSerializer<CommunityRea
     CommunityReadModel object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.name != null) {
-      yield r'name';
-      yield serializers.serialize(
-        object.name,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.description != null) {
-      yield r'description';
-      yield serializers.serialize(
-        object.description,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.createdAt != null) {
-      yield r'created_at';
-      yield serializers.serialize(
-        object.createdAt,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.updatedAt != null) {
-      yield r'updated_at';
-      yield serializers.serialize(
-        object.updatedAt,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(String),
+    );
+    yield r'name';
+    yield serializers.serialize(
+      object.name,
+      specifiedType: const FullType(String),
+    );
+    yield r'description';
+    yield serializers.serialize(
+      object.description,
+      specifiedType: const FullType(String),
+    );
+    yield r'created_at';
+    yield serializers.serialize(
+      object.createdAt,
+      specifiedType: const FullType(String),
+    );
+    yield r'updated_at';
+    yield serializers.serialize(
+      object.updatedAt,
+      specifiedType: const FullType(String),
+    );
   }
 
   @override

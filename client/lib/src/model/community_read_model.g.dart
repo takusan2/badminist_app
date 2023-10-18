@@ -8,23 +8,36 @@ part of 'community_read_model.dart';
 
 class _$CommunityReadModel extends CommunityReadModel {
   @override
-  final String? id;
+  final String id;
   @override
-  final String? name;
+  final String name;
   @override
-  final String? description;
+  final String description;
   @override
-  final String? createdAt;
+  final String createdAt;
   @override
-  final String? updatedAt;
+  final String updatedAt;
 
   factory _$CommunityReadModel(
           [void Function(CommunityReadModelBuilder)? updates]) =>
       (new CommunityReadModelBuilder()..update(updates))._build();
 
   _$CommunityReadModel._(
-      {this.id, this.name, this.description, this.createdAt, this.updatedAt})
-      : super._();
+      {required this.id,
+      required this.name,
+      required this.description,
+      required this.createdAt,
+      required this.updatedAt})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(id, r'CommunityReadModel', 'id');
+    BuiltValueNullFieldError.checkNotNull(name, r'CommunityReadModel', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        description, r'CommunityReadModel', 'description');
+    BuiltValueNullFieldError.checkNotNull(
+        createdAt, r'CommunityReadModel', 'createdAt');
+    BuiltValueNullFieldError.checkNotNull(
+        updatedAt, r'CommunityReadModel', 'updatedAt');
+  }
 
   @override
   CommunityReadModel rebuild(
@@ -128,11 +141,16 @@ class CommunityReadModelBuilder
   _$CommunityReadModel _build() {
     final _$result = _$v ??
         new _$CommunityReadModel._(
-            id: id,
-            name: name,
-            description: description,
-            createdAt: createdAt,
-            updatedAt: updatedAt);
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'CommunityReadModel', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'CommunityReadModel', 'name'),
+            description: BuiltValueNullFieldError.checkNotNull(
+                description, r'CommunityReadModel', 'description'),
+            createdAt: BuiltValueNullFieldError.checkNotNull(
+                createdAt, r'CommunityReadModel', 'createdAt'),
+            updatedAt: BuiltValueNullFieldError.checkNotNull(
+                updatedAt, r'CommunityReadModel', 'updatedAt'));
     replace(_$result);
     return _$result;
   }

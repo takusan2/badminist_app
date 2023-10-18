@@ -9,19 +9,28 @@ part of 'change_player_num_games_request_body.dart';
 class _$ChangePlayerNumGamesRequestBody
     extends ChangePlayerNumGamesRequestBody {
   @override
-  final String? communityId;
+  final String communityId;
   @override
-  final String? playerId;
+  final String playerId;
   @override
-  final int? numGames;
+  final int numGames;
 
   factory _$ChangePlayerNumGamesRequestBody(
           [void Function(ChangePlayerNumGamesRequestBodyBuilder)? updates]) =>
       (new ChangePlayerNumGamesRequestBodyBuilder()..update(updates))._build();
 
   _$ChangePlayerNumGamesRequestBody._(
-      {this.communityId, this.playerId, this.numGames})
-      : super._();
+      {required this.communityId,
+      required this.playerId,
+      required this.numGames})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        communityId, r'ChangePlayerNumGamesRequestBody', 'communityId');
+    BuiltValueNullFieldError.checkNotNull(
+        playerId, r'ChangePlayerNumGamesRequestBody', 'playerId');
+    BuiltValueNullFieldError.checkNotNull(
+        numGames, r'ChangePlayerNumGamesRequestBody', 'numGames');
+  }
 
   @override
   ChangePlayerNumGamesRequestBody rebuild(
@@ -111,7 +120,12 @@ class ChangePlayerNumGamesRequestBodyBuilder
   _$ChangePlayerNumGamesRequestBody _build() {
     final _$result = _$v ??
         new _$ChangePlayerNumGamesRequestBody._(
-            communityId: communityId, playerId: playerId, numGames: numGames);
+            communityId: BuiltValueNullFieldError.checkNotNull(
+                communityId, r'ChangePlayerNumGamesRequestBody', 'communityId'),
+            playerId: BuiltValueNullFieldError.checkNotNull(
+                playerId, r'ChangePlayerNumGamesRequestBody', 'playerId'),
+            numGames: BuiltValueNullFieldError.checkNotNull(
+                numGames, r'ChangePlayerNumGamesRequestBody', 'numGames'));
     replace(_$result);
     return _$result;
   }

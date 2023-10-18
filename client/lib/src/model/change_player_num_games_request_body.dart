@@ -17,13 +17,13 @@ part 'change_player_num_games_request_body.g.dart';
 @BuiltValue()
 abstract class ChangePlayerNumGamesRequestBody implements Built<ChangePlayerNumGamesRequestBody, ChangePlayerNumGamesRequestBodyBuilder> {
   @BuiltValueField(wireName: r'community_id')
-  String? get communityId;
+  String get communityId;
 
   @BuiltValueField(wireName: r'player_id')
-  String? get playerId;
+  String get playerId;
 
   @BuiltValueField(wireName: r'num_games')
-  int? get numGames;
+  int get numGames;
 
   ChangePlayerNumGamesRequestBody._();
 
@@ -48,27 +48,21 @@ class _$ChangePlayerNumGamesRequestBodySerializer implements PrimitiveSerializer
     ChangePlayerNumGamesRequestBody object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.communityId != null) {
-      yield r'community_id';
-      yield serializers.serialize(
-        object.communityId,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.playerId != null) {
-      yield r'player_id';
-      yield serializers.serialize(
-        object.playerId,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.numGames != null) {
-      yield r'num_games';
-      yield serializers.serialize(
-        object.numGames,
-        specifiedType: const FullType(int),
-      );
-    }
+    yield r'community_id';
+    yield serializers.serialize(
+      object.communityId,
+      specifiedType: const FullType(String),
+    );
+    yield r'player_id';
+    yield serializers.serialize(
+      object.playerId,
+      specifiedType: const FullType(String),
+    );
+    yield r'num_games';
+    yield serializers.serialize(
+      object.numGames,
+      specifiedType: const FullType(int),
+    );
   }
 
   @override

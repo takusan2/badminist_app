@@ -8,7 +8,7 @@ part of 'create_community_request_body.dart';
 
 class _$CreateCommunityRequestBody extends CreateCommunityRequestBody {
   @override
-  final String? name;
+  final String name;
   @override
   final String? description;
 
@@ -16,7 +16,11 @@ class _$CreateCommunityRequestBody extends CreateCommunityRequestBody {
           [void Function(CreateCommunityRequestBodyBuilder)? updates]) =>
       (new CreateCommunityRequestBodyBuilder()..update(updates))._build();
 
-  _$CreateCommunityRequestBody._({this.name, this.description}) : super._();
+  _$CreateCommunityRequestBody._({required this.name, this.description})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'CreateCommunityRequestBody', 'name');
+  }
 
   @override
   CreateCommunityRequestBody rebuild(
@@ -97,7 +101,9 @@ class CreateCommunityRequestBodyBuilder
   _$CreateCommunityRequestBody _build() {
     final _$result = _$v ??
         new _$CreateCommunityRequestBody._(
-            name: name, description: description);
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'CreateCommunityRequestBody', 'name'),
+            description: description);
     replace(_$result);
     return _$result;
   }

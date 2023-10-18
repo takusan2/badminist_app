@@ -8,18 +8,26 @@ part of 'change_member_role_request_body.dart';
 
 class _$ChangeMemberRoleRequestBody extends ChangeMemberRoleRequestBody {
   @override
-  final String? communityId;
+  final String communityId;
   @override
-  final String? userId;
+  final String userId;
   @override
-  final Role? role;
+  final Role role;
 
   factory _$ChangeMemberRoleRequestBody(
           [void Function(ChangeMemberRoleRequestBodyBuilder)? updates]) =>
       (new ChangeMemberRoleRequestBodyBuilder()..update(updates))._build();
 
-  _$ChangeMemberRoleRequestBody._({this.communityId, this.userId, this.role})
-      : super._();
+  _$ChangeMemberRoleRequestBody._(
+      {required this.communityId, required this.userId, required this.role})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        communityId, r'ChangeMemberRoleRequestBody', 'communityId');
+    BuiltValueNullFieldError.checkNotNull(
+        userId, r'ChangeMemberRoleRequestBody', 'userId');
+    BuiltValueNullFieldError.checkNotNull(
+        role, r'ChangeMemberRoleRequestBody', 'role');
+  }
 
   @override
   ChangeMemberRoleRequestBody rebuild(
@@ -109,7 +117,12 @@ class ChangeMemberRoleRequestBodyBuilder
   _$ChangeMemberRoleRequestBody _build() {
     final _$result = _$v ??
         new _$ChangeMemberRoleRequestBody._(
-            communityId: communityId, userId: userId, role: role);
+            communityId: BuiltValueNullFieldError.checkNotNull(
+                communityId, r'ChangeMemberRoleRequestBody', 'communityId'),
+            userId: BuiltValueNullFieldError.checkNotNull(
+                userId, r'ChangeMemberRoleRequestBody', 'userId'),
+            role: BuiltValueNullFieldError.checkNotNull(
+                role, r'ChangeMemberRoleRequestBody', 'role'));
     replace(_$result);
     return _$result;
   }

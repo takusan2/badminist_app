@@ -8,15 +8,20 @@ part of 'login_request_body.dart';
 
 class _$LoginRequestBody extends LoginRequestBody {
   @override
-  final String? email;
+  final String email;
   @override
-  final String? password;
+  final String password;
 
   factory _$LoginRequestBody(
           [void Function(LoginRequestBodyBuilder)? updates]) =>
       (new LoginRequestBodyBuilder()..update(updates))._build();
 
-  _$LoginRequestBody._({this.email, this.password}) : super._();
+  _$LoginRequestBody._({required this.email, required this.password})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(email, r'LoginRequestBody', 'email');
+    BuiltValueNullFieldError.checkNotNull(
+        password, r'LoginRequestBody', 'password');
+  }
 
   @override
   LoginRequestBody rebuild(void Function(LoginRequestBodyBuilder) updates) =>
@@ -93,8 +98,12 @@ class LoginRequestBodyBuilder
   LoginRequestBody build() => _build();
 
   _$LoginRequestBody _build() {
-    final _$result =
-        _$v ?? new _$LoginRequestBody._(email: email, password: password);
+    final _$result = _$v ??
+        new _$LoginRequestBody._(
+            email: BuiltValueNullFieldError.checkNotNull(
+                email, r'LoginRequestBody', 'email'),
+            password: BuiltValueNullFieldError.checkNotNull(
+                password, r'LoginRequestBody', 'password'));
     replace(_$result);
     return _$result;
   }

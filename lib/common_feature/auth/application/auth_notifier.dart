@@ -40,6 +40,7 @@ class AuthNotifier extends AsyncNotifier<UserReadModel?> {
         ),
       );
       final token = response.data?.token;
+      debugPrint('token: $token');
       if (token != null) {
         await secureStorageRepository.save(SecureStorageKey.token, token);
       }

@@ -18,13 +18,13 @@ part 'add_member_request_body.g.dart';
 @BuiltValue()
 abstract class AddMemberRequestBody implements Built<AddMemberRequestBody, AddMemberRequestBodyBuilder> {
   @BuiltValueField(wireName: r'community_id')
-  String? get communityId;
+  String get communityId;
 
   @BuiltValueField(wireName: r'user_id')
-  String? get userId;
+  String get userId;
 
   @BuiltValueField(wireName: r'role')
-  Role? get role;
+  Role get role;
   // enum roleEnum {  admin,  staff,  member,  };
 
   AddMemberRequestBody._();
@@ -50,27 +50,21 @@ class _$AddMemberRequestBodySerializer implements PrimitiveSerializer<AddMemberR
     AddMemberRequestBody object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.communityId != null) {
-      yield r'community_id';
-      yield serializers.serialize(
-        object.communityId,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.userId != null) {
-      yield r'user_id';
-      yield serializers.serialize(
-        object.userId,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.role != null) {
-      yield r'role';
-      yield serializers.serialize(
-        object.role,
-        specifiedType: const FullType(Role),
-      );
-    }
+    yield r'community_id';
+    yield serializers.serialize(
+      object.communityId,
+      specifiedType: const FullType(String),
+    );
+    yield r'user_id';
+    yield serializers.serialize(
+      object.userId,
+      specifiedType: const FullType(String),
+    );
+    yield r'role';
+    yield serializers.serialize(
+      object.role,
+      specifiedType: const FullType(Role),
+    );
   }
 
   @override

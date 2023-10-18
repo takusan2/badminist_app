@@ -16,10 +16,10 @@ part 'login_request_body.g.dart';
 @BuiltValue()
 abstract class LoginRequestBody implements Built<LoginRequestBody, LoginRequestBodyBuilder> {
   @BuiltValueField(wireName: r'email')
-  String? get email;
+  String get email;
 
   @BuiltValueField(wireName: r'password')
-  String? get password;
+  String get password;
 
   LoginRequestBody._();
 
@@ -44,20 +44,16 @@ class _$LoginRequestBodySerializer implements PrimitiveSerializer<LoginRequestBo
     LoginRequestBody object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.email != null) {
-      yield r'email';
-      yield serializers.serialize(
-        object.email,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.password != null) {
-      yield r'password';
-      yield serializers.serialize(
-        object.password,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'email';
+    yield serializers.serialize(
+      object.email,
+      specifiedType: const FullType(String),
+    );
+    yield r'password';
+    yield serializers.serialize(
+      object.password,
+      specifiedType: const FullType(String),
+    );
   }
 
   @override

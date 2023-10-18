@@ -15,7 +15,7 @@ part 'rename_community_request_body.g.dart';
 @BuiltValue()
 abstract class RenameCommunityRequestBody implements Built<RenameCommunityRequestBody, RenameCommunityRequestBodyBuilder> {
   @BuiltValueField(wireName: r'name')
-  String? get name;
+  String get name;
 
   RenameCommunityRequestBody._();
 
@@ -40,13 +40,11 @@ class _$RenameCommunityRequestBodySerializer implements PrimitiveSerializer<Rena
     RenameCommunityRequestBody object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.name != null) {
-      yield r'name';
-      yield serializers.serialize(
-        object.name,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'name';
+    yield serializers.serialize(
+      object.name,
+      specifiedType: const FullType(String),
+    );
   }
 
   @override

@@ -8,13 +8,16 @@ part of 'delete_community_request_body.dart';
 
 class _$DeleteCommunityRequestBody extends DeleteCommunityRequestBody {
   @override
-  final String? communityId;
+  final String communityId;
 
   factory _$DeleteCommunityRequestBody(
           [void Function(DeleteCommunityRequestBodyBuilder)? updates]) =>
       (new DeleteCommunityRequestBodyBuilder()..update(updates))._build();
 
-  _$DeleteCommunityRequestBody._({this.communityId}) : super._();
+  _$DeleteCommunityRequestBody._({required this.communityId}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        communityId, r'DeleteCommunityRequestBody', 'communityId');
+  }
 
   @override
   DeleteCommunityRequestBody rebuild(
@@ -85,8 +88,10 @@ class DeleteCommunityRequestBodyBuilder
   DeleteCommunityRequestBody build() => _build();
 
   _$DeleteCommunityRequestBody _build() {
-    final _$result =
-        _$v ?? new _$DeleteCommunityRequestBody._(communityId: communityId);
+    final _$result = _$v ??
+        new _$DeleteCommunityRequestBody._(
+            communityId: BuiltValueNullFieldError.checkNotNull(
+                communityId, r'DeleteCommunityRequestBody', 'communityId'));
     replace(_$result);
     return _$result;
   }

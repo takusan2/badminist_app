@@ -8,7 +8,7 @@ import 'package:openapi/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**players** | [**BuiltList&lt;PlayerReadModel&gt;**](PlayerReadModel.md) |  | [optional] 
+**players** | [**BuiltList&lt;PlayerReadModel&gt;**](PlayerReadModel.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -8,16 +8,22 @@ part of 'reset_player_num_games_request_body.dart';
 
 class _$ResetPlayerNumGamesRequestBody extends ResetPlayerNumGamesRequestBody {
   @override
-  final String? communityId;
+  final String communityId;
   @override
-  final String? playerId;
+  final String playerId;
 
   factory _$ResetPlayerNumGamesRequestBody(
           [void Function(ResetPlayerNumGamesRequestBodyBuilder)? updates]) =>
       (new ResetPlayerNumGamesRequestBodyBuilder()..update(updates))._build();
 
-  _$ResetPlayerNumGamesRequestBody._({this.communityId, this.playerId})
-      : super._();
+  _$ResetPlayerNumGamesRequestBody._(
+      {required this.communityId, required this.playerId})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        communityId, r'ResetPlayerNumGamesRequestBody', 'communityId');
+    BuiltValueNullFieldError.checkNotNull(
+        playerId, r'ResetPlayerNumGamesRequestBody', 'playerId');
+  }
 
   @override
   ResetPlayerNumGamesRequestBody rebuild(
@@ -99,7 +105,10 @@ class ResetPlayerNumGamesRequestBodyBuilder
   _$ResetPlayerNumGamesRequestBody _build() {
     final _$result = _$v ??
         new _$ResetPlayerNumGamesRequestBody._(
-            communityId: communityId, playerId: playerId);
+            communityId: BuiltValueNullFieldError.checkNotNull(
+                communityId, r'ResetPlayerNumGamesRequestBody', 'communityId'),
+            playerId: BuiltValueNullFieldError.checkNotNull(
+                playerId, r'ResetPlayerNumGamesRequestBody', 'playerId'));
     replace(_$result);
     return _$result;
   }

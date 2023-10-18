@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
             onBackground: const Color(0xFFFFFFFF),
             error: const Color(0xFFFF2C91),
             onError: const Color(0xFFEEEEEE),
+            outline: const Color(0xFFEEEEEE),
           ),
           primarySwatch: Colors.blue,
         ),

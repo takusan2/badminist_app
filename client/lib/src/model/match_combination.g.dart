@@ -8,13 +8,16 @@ part of 'match_combination.dart';
 
 class _$MatchCombination extends MatchCombination {
   @override
-  final BuiltList<Match>? matches;
+  final BuiltList<Match> matches;
 
   factory _$MatchCombination(
           [void Function(MatchCombinationBuilder)? updates]) =>
       (new MatchCombinationBuilder()..update(updates))._build();
 
-  _$MatchCombination._({this.matches}) : super._();
+  _$MatchCombination._({required this.matches}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        matches, r'MatchCombination', 'matches');
+  }
 
   @override
   MatchCombination rebuild(void Function(MatchCombinationBuilder) updates) =>
@@ -62,7 +65,7 @@ class MatchCombinationBuilder
   MatchCombinationBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _matches = $v.matches?.toBuilder();
+      _matches = $v.matches.toBuilder();
       _$v = null;
     }
     return this;
@@ -85,12 +88,12 @@ class MatchCombinationBuilder
   _$MatchCombination _build() {
     _$MatchCombination _$result;
     try {
-      _$result = _$v ?? new _$MatchCombination._(matches: _matches?.build());
+      _$result = _$v ?? new _$MatchCombination._(matches: matches.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'matches';
-        _matches?.build();
+        matches.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'MatchCombination', _$failedField, e.toString());

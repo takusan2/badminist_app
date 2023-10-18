@@ -8,15 +8,21 @@ part of 'remove_member_request_body.dart';
 
 class _$RemoveMemberRequestBody extends RemoveMemberRequestBody {
   @override
-  final String? communityId;
+  final String communityId;
   @override
-  final String? userId;
+  final String userId;
 
   factory _$RemoveMemberRequestBody(
           [void Function(RemoveMemberRequestBodyBuilder)? updates]) =>
       (new RemoveMemberRequestBodyBuilder()..update(updates))._build();
 
-  _$RemoveMemberRequestBody._({this.communityId, this.userId}) : super._();
+  _$RemoveMemberRequestBody._({required this.communityId, required this.userId})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        communityId, r'RemoveMemberRequestBody', 'communityId');
+    BuiltValueNullFieldError.checkNotNull(
+        userId, r'RemoveMemberRequestBody', 'userId');
+  }
 
   @override
   RemoveMemberRequestBody rebuild(
@@ -97,7 +103,10 @@ class RemoveMemberRequestBodyBuilder
   _$RemoveMemberRequestBody _build() {
     final _$result = _$v ??
         new _$RemoveMemberRequestBody._(
-            communityId: communityId, userId: userId);
+            communityId: BuiltValueNullFieldError.checkNotNull(
+                communityId, r'RemoveMemberRequestBody', 'communityId'),
+            userId: BuiltValueNullFieldError.checkNotNull(
+                userId, r'RemoveMemberRequestBody', 'userId'));
     replace(_$result);
     return _$result;
   }

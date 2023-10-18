@@ -8,16 +8,23 @@ part of 'member_read_model.dart';
 
 class _$MemberReadModel extends MemberReadModel {
   @override
-  final String? memberId;
+  final String memberId;
   @override
-  final UserReadModel? user;
+  final UserReadModel user;
   @override
-  final Role? role;
+  final Role role;
 
   factory _$MemberReadModel([void Function(MemberReadModelBuilder)? updates]) =>
       (new MemberReadModelBuilder()..update(updates))._build();
 
-  _$MemberReadModel._({this.memberId, this.user, this.role}) : super._();
+  _$MemberReadModel._(
+      {required this.memberId, required this.user, required this.role})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        memberId, r'MemberReadModel', 'memberId');
+    BuiltValueNullFieldError.checkNotNull(user, r'MemberReadModel', 'user');
+    BuiltValueNullFieldError.checkNotNull(role, r'MemberReadModel', 'role');
+  }
 
   @override
   MemberReadModel rebuild(void Function(MemberReadModelBuilder) updates) =>
@@ -80,7 +87,7 @@ class MemberReadModelBuilder
     final $v = _$v;
     if ($v != null) {
       _memberId = $v.memberId;
-      _user = $v.user?.toBuilder();
+      _user = $v.user.toBuilder();
       _role = $v.role;
       _$v = null;
     }
@@ -106,12 +113,16 @@ class MemberReadModelBuilder
     try {
       _$result = _$v ??
           new _$MemberReadModel._(
-              memberId: memberId, user: _user?.build(), role: role);
+              memberId: BuiltValueNullFieldError.checkNotNull(
+                  memberId, r'MemberReadModel', 'memberId'),
+              user: user.build(),
+              role: BuiltValueNullFieldError.checkNotNull(
+                  role, r'MemberReadModel', 'role'));
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'user';
-        _user?.build();
+        user.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'MemberReadModel', _$failedField, e.toString());

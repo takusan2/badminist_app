@@ -41,7 +41,7 @@ class AccountIconButton extends HookConsumerWidget {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: Text(
-                                user.name ?? '',
+                                user.name,
                                 style: TextStyle(
                                   color: Theme.of(context).colorScheme.primary,
                                 ),
@@ -55,7 +55,7 @@ class AccountIconButton extends HookConsumerWidget {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: Text(
-                                user.email ?? '',
+                                user.email,
                                 style: TextStyle(
                                   color: Theme.of(context).colorScheme.primary,
                                 ),

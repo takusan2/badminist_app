@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:badminist_app/feature/home/presentation/pages/home/home_page_state.dart';
 import 'package:badminist_app/services/dio_service.dart';
 import 'package:badminist_app/services/secure_storage/secure_storage_data_source.dart';
 import 'package:badminist_app/services/secure_storage/secure_storage_key.dart';
@@ -10,7 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:openapi/openapi.dart';
 
-final matchProvider = AsyncNotifierProvider<MatchNotifier, MatchCombination?>(
+final matchNotifierProvider =
+    AsyncNotifierProvider<MatchNotifier, MatchCombination?>(
   MatchNotifier.new,
 );
 
@@ -21,6 +23,7 @@ class MatchNotifier extends AsyncNotifier<MatchCombination?> {
       ref.watch(openApiProvider).getCommunitiesApi();
   SecureStorageRepository get secureStorageRepository =>
       ref.read(secureStorageRepositoryProvider);
+  HomePageState get homePageState => ref.watch(homePageStateProvider);
 
   @override
   FutureOr<MatchCombination?> build() {
@@ -28,7 +31,6 @@ class MatchNotifier extends AsyncNotifier<MatchCombination?> {
   }
 
   Future<MatchCombination?> _fetchMatch(
-    String communityId,
     int numCourt,
     Rule rule,
   ) async {
@@ -36,28 +38,27 @@ class MatchNotifier extends AsyncNotifier<MatchCombination?> {
       final token = await secureStorageRepository.load(SecureStorageKey.token);
       final response =
           await communitiesApi.communitiesCommunityIdGenerateMatchesGet(
-        communityId: communityId,
+        communityId: homePageState.selectedCommunity ?? '',
         numCourt: numCourt,
         rule: rule,
         headers: {'Authorization': 'Bearer $token'},
       );
+      debugPrint('fetchMatch data: ${response.data}');
       return response.data;
     } on DioException catch (e) {
-      throw ApiException(e.response?.data['message'] ?? e.message);
+      throw ApiException(e.response?.data.toString());
     } on Exception catch (e) {
-      debugPrint('fetchMatch: ${e.toString()}');
-      return null;
+      throw Exception(e.toString());
     }
   }
 
   Future<void> fetchMatch(
-    String communityId,
     int numCourt,
     Rule rule,
   ) async {
     state = const AsyncLoading<MatchCombination?>().copyWithPrevious(state);
     state = await AsyncValue.guard(
-      () async => await _fetchMatch(communityId, numCourt, rule),
+      () async => await _fetchMatch(numCourt, rule),
     );
   }
 }

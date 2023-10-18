@@ -8,13 +8,16 @@ part of 'rename_community_request_body.dart';
 
 class _$RenameCommunityRequestBody extends RenameCommunityRequestBody {
   @override
-  final String? name;
+  final String name;
 
   factory _$RenameCommunityRequestBody(
           [void Function(RenameCommunityRequestBodyBuilder)? updates]) =>
       (new RenameCommunityRequestBodyBuilder()..update(updates))._build();
 
-  _$RenameCommunityRequestBody._({this.name}) : super._();
+  _$RenameCommunityRequestBody._({required this.name}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'RenameCommunityRequestBody', 'name');
+  }
 
   @override
   RenameCommunityRequestBody rebuild(
@@ -84,7 +87,10 @@ class RenameCommunityRequestBodyBuilder
   RenameCommunityRequestBody build() => _build();
 
   _$RenameCommunityRequestBody _build() {
-    final _$result = _$v ?? new _$RenameCommunityRequestBody._(name: name);
+    final _$result = _$v ??
+        new _$RenameCommunityRequestBody._(
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'RenameCommunityRequestBody', 'name'));
     replace(_$result);
     return _$result;
   }
