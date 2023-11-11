@@ -53,7 +53,9 @@ class EditPlayerDialog extends HookConsumerWidget {
               const SizedBox(height: 15),
               TextFormField(
                 initialValue: name.value,
-                onSaved: (newValue) => name.value = newValue!,
+                onSaved: (newValue) {
+                  name.value = newValue!;
+                },
                 decoration: InputDecoration(
                   labelText: '名前',
                   filled: true,
@@ -167,7 +169,7 @@ class EditPlayerDialog extends HookConsumerWidget {
                             .read(playerListNotifierProvider.notifier)
                             .changePlayerProperty(
                               playerId: player.id,
-                              name: player.name,
+                              name: name.value,
                               age: player.age,
                               gender: player.gender,
                               level: level.value,

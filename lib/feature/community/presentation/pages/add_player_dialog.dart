@@ -60,34 +60,6 @@ class AddPlayerDialog extends HookConsumerWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  TextFormField(
-                    initialValue: numGames.value.toString(),
-                    onSaved: (newValue) =>
-                        numGames.value = int.parse(newValue!),
-                    validator: (value) {
-                      return switch (Validator.isInteger(value)) {
-                        ValidatorException.isEmpty => '入力してください',
-                        ValidatorException.isNotInteger => '数値を入力してください',
-                        _ => null
-                      };
-                    },
-                    keyboardType: TextInputType.number,
-                    textAlign: TextAlign.center,
-                    decoration: InputDecoration(
-                      labelText: '試合数',
-                      filled: true,
-                      fillColor: Theme.of(context).colorScheme.onBackground,
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      constraints: const BoxConstraints(
-                        maxWidth: 100,
-                      ),
-                    ),
-                  ),
                   DropdownButton(
                     value: level.value,
                     onChanged: (value) {

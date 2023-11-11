@@ -9,6 +9,7 @@ import 'package:openapi/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **matches** | [**BuiltList&lt;Match&gt;**](Match.md) |  | 
+**restPlayers** | [**BuiltList&lt;PlayerReadModel&gt;**](PlayerReadModel.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

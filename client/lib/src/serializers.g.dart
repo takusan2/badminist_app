@@ -43,6 +43,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
           () => new ListBuilder<Match>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(PlayerReadModel)]),
+          () => new ListBuilder<PlayerReadModel>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(PlayerReadModel)]),
           () => new ListBuilder<PlayerReadModel>()))
     .build();
 

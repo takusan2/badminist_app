@@ -21,6 +21,7 @@ class PlayerListNotifier extends AsyncNotifier<List<PlayerReadModel>?> {
 
   CommunitiesApi get communitiesApi =>
       ref.watch(openApiProvider).getCommunitiesApi();
+
   SecureStorageRepository get secureStorageRepository =>
       ref.read(secureStorageRepositoryProvider);
   HomePageState get homePageState => ref.watch(homePageStateProvider);
@@ -101,6 +102,8 @@ class PlayerListNotifier extends AsyncNotifier<List<PlayerReadModel>?> {
         headers: {'Authorization': 'Bearer $token'},
       );
     } on DioException catch (e) {
+      if (e.response?.statusCode == 400) {}
+
       throw ApiException(e.response?.data.toString());
     } on Exception catch (e) {
       debugPrint('ChangePlayerStatus: ${e.toString()}');
@@ -129,6 +132,8 @@ class PlayerListNotifier extends AsyncNotifier<List<PlayerReadModel>?> {
     );
     await _changePlayerProperty(requestBody);
 
+    debugPrint('changePlayerProperty: ${requestBody.toString()}');
+
     state =
         const AsyncLoading<List<PlayerReadModel>?>().copyWithPrevious(state);
     state = await AsyncValue.guard(
@@ -151,6 +156,35 @@ class PlayerListNotifier extends AsyncNotifier<List<PlayerReadModel>?> {
       throw ApiException(e.response?.data.toString());
     } on Exception catch (e) {
       debugPrint('deletePlayer: ${e.toString()}');
+    }
+    state =
+        const AsyncLoading<List<PlayerReadModel>?>().copyWithPrevious(state);
+    state = await AsyncValue.guard(
+      () async => await _fetchPlayers(homePageState.selectedCommunity ?? ''),
+    );
+  }
+
+  Future<void> resetAllPlayerNumGames() async {
+    try {
+      final token = await secureStorageRepository.load(SecureStorageKey.token);
+      if (state.value == null) {
+        return;
+      }
+      for (final player in state.value!) {
+        await communitiesApi.communitiesChangePlayerNumGamesPut(
+          changePlayerNumGamesRequestBody: ChangePlayerNumGamesRequestBody(
+            (b) => b
+              ..communityId = homePageState.selectedCommunity
+              ..playerId = player.id
+              ..numGames = 0,
+          ),
+          headers: {'Authorization': 'Bearer $token'},
+        );
+      }
+    } on DioException catch (e) {
+      throw ApiException(e.response?.data.toString());
+    } on Exception catch (e) {
+      debugPrint('ResetAllPlayerNumGames: ${e.toString()}');
     }
     state =
         const AsyncLoading<List<PlayerReadModel>?>().copyWithPrevious(state);

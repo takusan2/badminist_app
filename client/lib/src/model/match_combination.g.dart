@@ -9,12 +9,14 @@ part of 'match_combination.dart';
 class _$MatchCombination extends MatchCombination {
   @override
   final BuiltList<Match> matches;
+  @override
+  final BuiltList<PlayerReadModel>? restPlayers;
 
   factory _$MatchCombination(
           [void Function(MatchCombinationBuilder)? updates]) =>
       (new MatchCombinationBuilder()..update(updates))._build();
 
-  _$MatchCombination._({required this.matches}) : super._() {
+  _$MatchCombination._({required this.matches, this.restPlayers}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         matches, r'MatchCombination', 'matches');
   }
@@ -30,13 +32,16 @@ class _$MatchCombination extends MatchCombination {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is MatchCombination && matches == other.matches;
+    return other is MatchCombination &&
+        matches == other.matches &&
+        restPlayers == other.restPlayers;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, matches.hashCode);
+    _$hash = $jc(_$hash, restPlayers.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -44,7 +49,8 @@ class _$MatchCombination extends MatchCombination {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'MatchCombination')
-          ..add('matches', matches))
+          ..add('matches', matches)
+          ..add('restPlayers', restPlayers))
         .toString();
   }
 }
@@ -58,6 +64,12 @@ class MatchCombinationBuilder
       _$this._matches ??= new ListBuilder<Match>();
   set matches(ListBuilder<Match>? matches) => _$this._matches = matches;
 
+  ListBuilder<PlayerReadModel>? _restPlayers;
+  ListBuilder<PlayerReadModel> get restPlayers =>
+      _$this._restPlayers ??= new ListBuilder<PlayerReadModel>();
+  set restPlayers(ListBuilder<PlayerReadModel>? restPlayers) =>
+      _$this._restPlayers = restPlayers;
+
   MatchCombinationBuilder() {
     MatchCombination._defaults(this);
   }
@@ -66,6 +78,7 @@ class MatchCombinationBuilder
     final $v = _$v;
     if ($v != null) {
       _matches = $v.matches.toBuilder();
+      _restPlayers = $v.restPlayers?.toBuilder();
       _$v = null;
     }
     return this;
@@ -88,12 +101,16 @@ class MatchCombinationBuilder
   _$MatchCombination _build() {
     _$MatchCombination _$result;
     try {
-      _$result = _$v ?? new _$MatchCombination._(matches: matches.build());
+      _$result = _$v ??
+          new _$MatchCombination._(
+              matches: matches.build(), restPlayers: _restPlayers?.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'matches';
         matches.build();
+        _$failedField = 'restPlayers';
+        _restPlayers?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'MatchCombination', _$failedField, e.toString());

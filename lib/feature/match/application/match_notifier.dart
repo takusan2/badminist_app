@@ -30,7 +30,7 @@ class MatchNotifier extends AsyncNotifier<MatchCombination?> {
     return null;
   }
 
-  Future<MatchCombination?> _fetchMatch(
+  Future<MatchCombination?> _generateMatch(
     int numCourt,
     Rule rule,
   ) async {
@@ -45,20 +45,50 @@ class MatchNotifier extends AsyncNotifier<MatchCombination?> {
       );
       debugPrint('fetchMatch data: ${response.data}');
       return response.data;
-    } on DioException catch (e) {
-      throw ApiException(e.response?.data.toString());
-    } on Exception catch (e) {
-      throw Exception(e.toString());
+    } on Exception catch (_) {
+      rethrow;
     }
   }
 
-  Future<void> fetchMatch(
+  Future<void> generateMatch(
     int numCourt,
     Rule rule,
   ) async {
-    state = const AsyncLoading<MatchCombination?>().copyWithPrevious(state);
-    state = await AsyncValue.guard(
-      () async => await _fetchMatch(numCourt, rule),
-    );
+    try {
+      final matches = await _generateMatch(numCourt, rule);
+      state = const AsyncLoading<MatchCombination?>().copyWithPrevious(state);
+      state = await AsyncValue.guard(
+        () async => matches,
+      );
+    } on DioException catch (e) {
+      debugPrint('generateMatch: ${e.response?.data.toString()}');
+      throw ApiException(e.response?.data.toString());
+    } on Exception catch (e) {
+      debugPrint('generateMatch: ${e.toString()}');
+    }
+  }
+
+  Future<void> incrementNumGames(
+    PlayerReadModel player,
+  ) async {
+    try {
+      final token = await secureStorageRepository.load(SecureStorageKey.token);
+      final requestBody = ChangePlayerNumGamesRequestBody(
+        (b) => b
+          ..communityId = homePageState.selectedCommunity ?? ''
+          ..playerId = player.id
+          ..numGames = player.numGames + 1,
+      );
+
+      communitiesApi.communitiesChangePlayerNumGamesPut(
+        changePlayerNumGamesRequestBody: requestBody,
+        headers: {'Authorization': 'Bearer $token'},
+      );
+    } on DioException catch (e) {
+      debugPrint('incrementNumGames: ${e.response?.data.toString()}');
+      throw ApiException(e.response?.data.toString());
+    } on Exception catch (e) {
+      debugPrint('incrementNumGames: ${e.toString()}');
+    }
   }
 }

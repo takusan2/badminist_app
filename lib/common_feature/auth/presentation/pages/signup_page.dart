@@ -52,7 +52,7 @@ class SignUpPage extends HookConsumerWidget {
                       validator: (value) => switch (
                           Validator.validateEmail(value!)) {
                         ValidatorException.isEmpty => '入力してください',
-                        _ => '予期せぬ入力です'
+                        _ => null
                       },
                     ),
                     const SizedBox(height: 30),

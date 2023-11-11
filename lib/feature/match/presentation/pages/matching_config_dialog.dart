@@ -1,4 +1,5 @@
 import 'package:badminist_app/feature/match/application/match_notifier.dart';
+import 'package:badminist_app/feature/match/presentation/pages/matching_result_page.dart';
 import 'package:badminist_app/utils/exception/validator_exception.dart';
 import 'package:badminist_app/utils/formatter/formatter.dart';
 import 'package:badminist_app/utils/validator/validator.dart';
@@ -7,12 +8,13 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:openapi/openapi.dart';
 
-class MatchConfigDialog extends HookConsumerWidget {
-  MatchConfigDialog({super.key});
+class MatchingConfigDialog extends HookConsumerWidget {
+  MatchingConfigDialog({super.key});
 
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final errorMessage = useState<String>('');
     final numCourts = useState<int>(1);
     final rule = useState<Rule>(Rule.singles);
     return Dialog(
@@ -93,6 +95,12 @@ class MatchConfigDialog extends HookConsumerWidget {
                 ],
               ),
               const SizedBox(height: 15),
+              Text(
+                errorMessage.value,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.error,
+                ),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -100,9 +108,27 @@ class MatchConfigDialog extends HookConsumerWidget {
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
+
+                        errorMessage.value = '';
                         await ref
                             .read(matchNotifierProvider.notifier)
-                            .fetchMatch(numCourts.value, rule.value);
+                            .generateMatch(numCourts.value, rule.value)
+                            .onError(
+                              (error, stackTrace) =>
+                                  errorMessage.value = error.toString(),
+                            )
+                            .then((value) {
+                          if (errorMessage.value.isEmpty) {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => MatchingResultPage(
+                                  numCourts: numCourts.value,
+                                  rule: rule.value,
+                                ),
+                              ),
+                            );
+                          }
+                        });
                       }
                     },
                     style: TextButton.styleFrom(

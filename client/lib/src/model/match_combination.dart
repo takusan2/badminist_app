@@ -5,6 +5,7 @@
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
 import 'package:openapi/src/model/match.dart';
+import 'package:openapi/src/model/player_read_model.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -14,10 +15,14 @@ part 'match_combination.g.dart';
 ///
 /// Properties:
 /// * [matches] 
+/// * [restPlayers] 
 @BuiltValue()
 abstract class MatchCombination implements Built<MatchCombination, MatchCombinationBuilder> {
   @BuiltValueField(wireName: r'matches')
   BuiltList<Match> get matches;
+
+  @BuiltValueField(wireName: r'rest_players')
+  BuiltList<PlayerReadModel>? get restPlayers;
 
   MatchCombination._();
 
@@ -47,6 +52,13 @@ class _$MatchCombinationSerializer implements PrimitiveSerializer<MatchCombinati
       object.matches,
       specifiedType: const FullType(BuiltList, [FullType(Match)]),
     );
+    if (object.restPlayers != null) {
+      yield r'rest_players';
+      yield serializers.serialize(
+        object.restPlayers,
+        specifiedType: const FullType(BuiltList, [FullType(PlayerReadModel)]),
+      );
+    }
   }
 
   @override
@@ -76,6 +88,13 @@ class _$MatchCombinationSerializer implements PrimitiveSerializer<MatchCombinati
             specifiedType: const FullType(BuiltList, [FullType(Match)]),
           ) as BuiltList<Match>;
           result.matches.replace(valueDes);
+          break;
+        case r'rest_players':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(PlayerReadModel)]),
+          ) as BuiltList<PlayerReadModel>;
+          result.restPlayers.replace(valueDes);
           break;
         default:
           unhandled.add(key);

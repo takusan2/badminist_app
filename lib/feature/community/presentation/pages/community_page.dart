@@ -5,7 +5,7 @@ import 'package:badminist_app/feature/community/presentation/widgets/player_num_
 import 'package:badminist_app/feature/community/presentation/widgets/player_status_elem.dart';
 import 'package:badminist_app/feature/community/application/player_list_notifier.dart';
 import 'package:badminist_app/feature/community/presentation/widgets/custom_table.dart';
-import 'package:badminist_app/feature/match/presentation/match_config_dialog.dart';
+import 'package:badminist_app/feature/match/presentation/pages/matching_config_dialog.dart';
 import 'package:badminist_app/widgets/async_container.dart';
 import 'package:badminist_app/widgets/main_scaffold.dart';
 import 'package:flutter/material.dart';
@@ -75,14 +75,15 @@ class CommunityPage extends HookConsumerWidget {
                             ),
                           ),
                         ),
-                        Center(
-                          child: Text(
-                            'レベル',
-                            style: TextStyle(
-                              color: Theme.of(context).colorScheme.onPrimary,
-                            ),
-                          ),
-                        ),
+                        // TODO: レベルを利用した組合せ生成が可能になったら表示する
+                        // Center(
+                        //   child: Text(
+                        //     'レベル',
+                        //     style: TextStyle(
+                        //       color: Theme.of(context).colorScheme.onPrimary,
+                        //     ),
+                        //   ),
+                        // ),
                         Center(
                           child: Text(
                             '編集',
@@ -126,7 +127,8 @@ class CommunityPage extends HookConsumerWidget {
                               },
                             ),
                             PlayerNumGamesElem(numGames: player.numGames),
-                            PlayerLevelElem(level: player.level),
+                            // TODO: レベルを利用した組合せ生成が可能になったら表示する
+                            // PlayerLevelElem(level: player.level),
                             IconButton(
                               onPressed: () {
                                 showDialog(
@@ -144,18 +146,63 @@ class CommunityPage extends HookConsumerWidget {
                   },
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                      context: context, builder: (_) => MatchConfigDialog());
-                },
-                child: Text(
-                  '組合せを作成する',
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.onPrimary,
-                    fontWeight: FontWeight.bold,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      // 全ての選手の試合数をリセットしますが、よろしいですか？と表示する
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: const Text('確認'),
+                          content: const Text(
+                            '全ての選手の試合数をリセットしますが、よろしいですか？',
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text('キャンセル'),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                                notifier.resetAllPlayerNumGames();
+                              },
+                              child: const Text('OK'),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                    child: Text(
+                      '試合数をリセット',
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onPrimary,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
-                ),
+                  ElevatedButton(
+                    onPressed: () {
+                      showDialog(
+                          context: context,
+                          builder: (_) => MatchingConfigDialog());
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Theme.of(context).colorScheme.secondary,
+                    ),
+                    child: Text(
+                      '組合せを作成',
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onPrimary,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
               )
             ],
           ),
